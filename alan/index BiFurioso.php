@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 date_default_timezone_set("America/Lima");
 $date = new DateTime();
 
@@ -24,10 +24,10 @@ include '../conexion.php';
     <title>ADMIN-Encuestas</title>
 
     <script type="text/javascript" language="javascript">
-    history.pushState(null, null, location.href);
-    window.onpopstate = function() {
-        history.go(1);
-    };
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.go(1);
+        };
     </script>
 
 </head>
@@ -49,7 +49,7 @@ include '../conexion.php';
             <form class="form-inline my-2 my-lg-0" style="color: #fff">
 
                 <?php
-                session_start();
+
                 if (isset($_SESSION['u_usuario'])) {
                     echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
 
@@ -78,8 +78,7 @@ include '../conexion.php';
                             Agregar Encuesta
                         </button>
                         <div class="col-md-5">
-                            <a href="../Menu/menu.php"><button class="float-right btn btn-warning"
-                                    style="color: white;">
+                            <a href="../Menu/menu.php"><button class="float-right btn btn-warning" style="color: white;">
                                     Regresar
                                 </button></a>
                         </div>
@@ -132,15 +131,13 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="titulo" class="col-sm-3 col-form-label">Título</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título"
-                                autocomplete="off" autofocus>
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" autocomplete="off" autofocus>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="descripcion" class="col-sm-3 col-form-label">Descripción</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="descripcion" name="descripcion"
-                                placeholder="Descripción"></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
                         </div>
                     </div>
                     <!--SELECT DE LAS CARRERAS CARGADAS EN BD-->
@@ -187,8 +184,7 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="fecha_final" class="col-sm-3 col-form-label">Fecha Final</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="fecha_final" name="fecha_final"
-                                value="<?php echo $fecha_inicio ?>" autocomplete="off">
+                            <input type="text" class="form-control" id="fecha_final" name="fecha_final" value="<?php echo $fecha_inicio ?>" autocomplete="off">
                             <p>Fomato: año-mes-día horas:minutos:segundos</p>
                         </div>
                     </div>
@@ -199,8 +195,7 @@ include '../conexion.php';
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="btnGuardar" onclick="agregarEncuesta()">Agregar
                     Encuesta</button>
-                <input type="hidden" id="hidden_id_usuario" name="id_usuario"
-                    value="<?php echo $_SESSION['id_usuario'] ?>">
+                <input type="hidden" id="hidden_id_usuario" name="id_usuario" value="<?php echo $_SESSION['id_usuario'] ?>">
             </div>
             </form>
 
@@ -241,8 +236,7 @@ include '../conexion.php';
                 <div class="form-group row">
                     <label for="fecha_final" class="col-sm-3 col-form-label">Fecha Final</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="modificar_fecha_final" placeholder="Fecha de Cierre"
-                            autocomplete="off" value="<?php echo $fecha_inicio ?>">
+                        <input type="text" class="form-control" id="modificar_fecha_final" placeholder="Fecha de Cierre" autocomplete="off" value="<?php echo $fecha_inicio ?>">
                         <p>Fomato: año-mes-día horas:minutos:segundos</p>
                     </div>
                 </div>
@@ -261,27 +255,27 @@ include '../conexion.php';
 </div>
 
 <script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#btnGuardar').click(function() {
-        var datos = $('#Filtro')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        /*alert(datos);
-        return false;*/
-        $.ajax({
-            type: "POST",
-            url: "ajax_encuesta/agregarEncuesta.php",
-            data: datos,
-            success: function(r) {
-                if (r) {
-                    alert("Error al cargar");
-                } else {
-                    alert("Agregado con exito");
+    //en teoria esto es jquery
+    $(document).ready(function() {
+        $('#btnGuardar').click(function() {
+            var datos = $('#Filtro')
+                .serialize(); //serialize trabaja con el id del form y los names de los inputs
+            //alert(datos);
+            //return false;
+            $.ajax({
+                type: "POST",
+                url: "ajax_encuesta/agregarEncuesta.php",
+                data: datos,
+                success: function(r) {
+                    if (r) {
+                        alert("Error al cargar");
+                    } else {
+                        alert("Agregado con exito");
+                    }
                 }
-            }
+            });
+            //return false; //evita que se recargue y pierda los datos del form
         });
-        //return false; //evita que se recargue y pierda los datos del form
-    });
 
-});
+    });
 </script>

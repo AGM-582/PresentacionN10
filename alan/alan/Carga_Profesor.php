@@ -28,7 +28,6 @@
                         <input style="background:#E5E7E9;" type="text" name="legajo" placeholder="Ingrese su Legajo"
                             required>
                     </div>
-
                     <div class="input-box">
                         <span class="details">Correo</span>
                         <input style="background:#E5E7E9;" type="email" name="correo" placeholder="Ingrese su Correo"
@@ -43,16 +42,28 @@
                 <div class="button">
                     <button id="btnGuardar">Agregar Profesor</button>
                 </div>
+            </form>
         </div>
-        </form>
+        <div>
+            <form action="subirProfesores.php" method="POST" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td class="letra" width="250"><strong>Subir archivo de profesores completo:</strong></td>
+                        <td><input type="file" name="foto" id="foto"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="enviar" value="SUBIR" class="boton">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <br>
         <div class="boton">
-
             <a href="../menu.php"><button style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;"
                     class="boton"><i class="fas fa-arrow-left"></i> Volver Atrás</button></a>
         </div>
-
     </div>
-
 </body>
 
 </html>
