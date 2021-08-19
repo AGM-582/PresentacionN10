@@ -49,7 +49,7 @@ while ($row = $resultado->fetch_assoc()) {
                         <button onclick="publicarEncuesta(' . $row['id_encuesta'] . ')" class="dropdown-item btn btn-primary">Publicar</button>
                         <button onclick="finalizarEncuesta(' . $row['id_encuesta'] . ')" class="dropdown-item btn btn-secondary">Finalizar</button>
 
-                        <a class="dropdown-item btn btn-secondary" href="vista_previa.php?id_encuesta=' . $row['id_encuesta'] . '">Vista Previa</a>
+                        <a class="dropdown-item btn btn-secondary" href="vista_previa-alan.php?id_encuesta=' . $row['id_encuesta'] . '">Vista Previa</a>
 
                         <a class="dropdown-item btn btn-secondary" target="_blank" href="reporte.php?id_encuesta=' . $row['id_encuesta'] . '">Resultados</a>
                     </div>

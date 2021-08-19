@@ -65,6 +65,7 @@ $ids = array();
 
 
 		$id_usuario = $_SESSION['id_usuario'];
+		echo $id_usuario;
 
 		$query5 = "SELECT * FROM usuarios_encuestas WHERE id_usuario = '$id_usuario' AND id_encuesta = '$id_encuesta'";
 		$resultado5 = $con->query($query5);

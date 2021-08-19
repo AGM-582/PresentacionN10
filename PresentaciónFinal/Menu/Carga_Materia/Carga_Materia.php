@@ -28,13 +28,14 @@ include '../../conexion.php';
                         <input style="background:#E5E7E9;" name="nombre" type="text"
                             placeholder="Ingrese su Nombre de la materia" required>
                     </div>
+
                     <div class="input-box">
                         <span class="details">Carrera:</span>
                         <?php
                         $query = $con->query("SELECT * FROM carrera");
                         ?>
                         <!--SELECT DE LAS CARRERAS CARGADAS EN BD-->
-                        <select name="carrera">
+                        <select name="carrera" id="carrera">
                             <option value="0">Seleccione:</option>
                             <?php
                             while ($valores = mysqli_fetch_array($query)) {
@@ -45,6 +46,13 @@ include '../../conexion.php';
                             ?>
                         </select>
                     </div>
+                    <!---SELECT ANIOS DEPENDIENDO DE CARRERA------------------------------------------------------->
+                    <div class="input-box" id="selectAnio">
+                        <span class="details">Año</span>
+                    </div>
+
+
+                    <!---------------------------------------------------------------------------------------------->
                     <div class="input-box">
                         <span class="details">Profesor:</span>
                         <?php
@@ -78,6 +86,31 @@ include '../../conexion.php';
 </body>
 
 </html>
+
+<!------script select -------------------------------------------------------------------------------->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#carrera').val(1);
+    recargarLista();
+    $('#carrera').change(function() {
+        recargarLista();
+    });
+})
+</script>
+<script type="text/javascript">
+function recargarLista() {
+    $.ajax({
+        type: "POST",
+        url: "cargaSelect.php",
+        data: "carrera=" + $('#carrera').val(),
+        success: function(r) {
+            $('#selectAnio').html(r);
+        }
+    });
+}
+</script>
+
+<!------------------------------------------------------------------------------------------------------>
 
 <script type="text/javascript">
 //en teoria esto es jquery

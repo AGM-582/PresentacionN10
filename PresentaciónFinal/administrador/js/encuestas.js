@@ -22,6 +22,24 @@ $(function() {
 
 // Agregar nueva encuesta
 function agregarEncuesta() {
+    // Obtener los valores de los inputs
+    var id_usuario  = $("#hidden_id_usuario").val();
+    var titulo      = $("#titulo").val();
+    var carrera     = $("#carrera").val();
+    var materia     = $("#materia").val("");
+    var descripcion = $("#descripcion").val();
+    var fecha_final = $("#fecha_final").val();
+    // Agregar encuesta con el método ajax POST
+    $.post("ajax_encuesta/agregarEncuesta4.php",
+        {
+            titulo      : titulo,
+            carrera     : carrera,
+            materia     : materia,
+            descripcion : descripcion,
+            fecha_final : fecha_final,
+            id_usuario  : id_usuario
+        },
+        function (data, status) {
             // Cerrar el modal
             $("#modal_agregar").modal("hide");
             // Mostrar las encuestas nuevamente
@@ -32,6 +50,8 @@ function agregarEncuesta() {
             $("#materia").val("");
             $("#descripcion").val("");
             $("#fecha_final").val("");
+        }
+    ) ;
 }
 
 // Eliminar encuesta

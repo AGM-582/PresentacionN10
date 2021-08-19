@@ -1,5 +1,5 @@
 <?php
-include '../../conexion.php';
+include ('../../conexion.php');
 //FALTARÍA CONTEMPLAR UNA INSTRUCCIÓN APARTE PARA EL UPDATE EN LUGAR DE LA SOBREESCRITURA
 	$ruta = 'Upload/';	
 	foreach ($_FILES as $key) {
@@ -46,4 +46,3 @@ include '../../conexion.php';
 	print_r(variable/s);
 	print_r("</pre>");*/
 	fclose($fichero);
-?>

@@ -110,7 +110,7 @@ Ejemplo:
 <span class="kw">require(</span><span class="str">'makefont/makefont.php'</span><span class="kw">);
 
 </span>MakeFont<span class="kw">(</span><span class="str">'c:\\Windows\\Fonts\\comic.ttf'</span><span class="kw">,</span><span class="str">'cp1252'</span><span class="kw">);
-</span>?&gt;</code></pre>
+</span>?&gt;</span></code></pre>
 </div>
 que devuelve los ficheros comic.php y comic.z.
 <br>
@@ -132,12 +132,14 @@ Por último, para las fuentes TrueType y OpenType, también puede generar los arch
 El segundo paso es el más simple. Sólo necesita llamar al método <a href='../doc/addfont.htm'>AddFont()</a>:
 <div class="source">
 <pre><code>$pdf<span class="kw">-&gt;</span>AddFont<span class="kw">(</span><span class="str">'Comic'</span><span class="kw">,</span><span class="str">''</span><span class="kw">,</span><span class="str">'comic.php'</span><span class="kw">);
+</span>?&gt;
 </span></code></pre>
 </div>
 Y la fuente queda disponible (en los estilos normal y subrayado), lista para usar como las otras.
 Si hubiéramos trabajado con la Comic Sans MS Bold (comicbd.ttf), hubiésemos escrito:
 <div class="source">
 <pre><code>$pdf<span class="kw">-&gt;</span>AddFont<span class="kw">(</span><span class="str">'Comic'</span><span class="kw">,</span><span class="str">'B'</span><span class="kw">,</span><span class="str">'comicbd.php'</span><span class="kw">);
+</span>?&gt;
 </span></code></pre>
 </div>
 
@@ -149,7 +151,7 @@ El primer paso es la generación de los archivos de la fuente:
 <span class="kw">require(</span><span class="str">'makefont/makefont.php'</span><span class="kw">);
 
 </span>MakeFont<span class="kw">(</span><span class="str">'calligra.ttf'</span><span class="kw">,</span><span class="str">'cp1252'</span><span class="kw">);
-</span>?&gt;</code></pre>
+</span>?&gt;</span></code></pre>
 </div>
 El script nos devolverá el siguiente informe:
 <br>
@@ -182,7 +184,7 @@ Podemos copiar estos dos ficheros en el directorio de fuentes (font) y escribir 
 </span>$pdf<span class="kw">-&gt;</span>SetFont<span class="kw">(</span><span class="str">'Calligrapher'</span><span class="kw">,</span><span class="str">''</span><span class="kw">,</span>35<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>Write<span class="kw">(</span>10<span class="kw">,</span><span class="str">'Enjoy new fonts with FPDF!'</span><span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>Output<span class="kw">();
-</span>?&gt;</code></pre>
+</span>?&gt;</span></code></pre>
 </div>
 <p class='demo'><a href='tuto7.php' target='_blank' class='demo'>[Demo]</a></p>
 </body>

@@ -4,6 +4,7 @@
 // Incluir archivo de conexión a base de datos
 include("../../conexion.php");
 
+
 // Establecemos la zona horario
 date_default_timezone_set("America/Lima");
 $date = new DateTime();

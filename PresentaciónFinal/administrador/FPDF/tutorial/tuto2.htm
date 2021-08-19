@@ -18,7 +18,7 @@ class </span>PDF <span class="kw">extends </span>FPDF
 </span><span class="kw">function </span>Header<span class="kw">()
 {
     </span><span class="cmt">// Logo
-    </span>$<span class="kw">this-&gt;</span>Image<span class="kw">(</span><span class="str">'logo_pb.png'</span><span class="kw">,</span>10<span class="kw">,</span>8<span class="kw">,</span>33<span class="kw">);
+    </span>$<span class="kw">this-&gt;</span>Image<span class="kw">(</span><span class="str">'logo.png'</span><span class="kw">,</span>10<span class="kw">,</span>8<span class="kw">,</span>33<span class="kw">);
     </span><span class="cmt">// Arial bold 15
     </span>$<span class="kw">this-&gt;</span>SetFont<span class="kw">(</span><span class="str">'Arial'</span><span class="kw">,</span><span class="str">'B'</span><span class="kw">,</span>15<span class="kw">);
     </span><span class="cmt">// Movernos a la derecha
@@ -49,7 +49,7 @@ class </span>PDF <span class="kw">extends </span>FPDF
 for(</span>$i<span class="kw">=</span>1<span class="kw">;</span>$i<span class="kw">&lt;=</span>40<span class="kw">;</span>$i<span class="kw">++)
     </span>$pdf<span class="kw">-&gt;</span>Cell<span class="kw">(</span>0<span class="kw">,</span>10<span class="kw">,</span><span class="str">'Imprimiendo línea número '</span><span class="kw">.</span>$i<span class="kw">,</span>0<span class="kw">,</span>1<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>Output<span class="kw">();
-</span>?&gt;</code></pre>
+</span>?&gt;</span></code></pre>
 </div>
 <p class='demo'><a href='tuto2.php' target='_blank' class='demo'>[Demo]</a></p>
 Este ejemplo hace uso de los métodos <a href='../doc/header.htm'>Header()</a> y <a href='../doc/footer.htm'>Footer()</a> para procesar las

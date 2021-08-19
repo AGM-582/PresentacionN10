@@ -39,6 +39,7 @@
                         <input style="background:#E5E7E9;" type="text" name="telefono"
                             placeholder="Ingrese Número de Celular" required>
                     </div>
+
                 </div>
                 <div class="button">
                     <button id="btnGuardar">Agregar Profesor</button>

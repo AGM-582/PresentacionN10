@@ -17,7 +17,7 @@ Comencemos con el clásico ejemplo:
 </span>$pdf<span class="kw">-&gt;</span>SetFont<span class="kw">(</span><span class="str">'Arial'</span><span class="kw">,</span><span class="str">'B'</span><span class="kw">,</span>16<span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>Cell<span class="kw">(</span>40<span class="kw">,</span>10<span class="kw">,</span><span class="str">'¡Hola, Mundo!'</span><span class="kw">);
 </span>$pdf<span class="kw">-&gt;</span>Output<span class="kw">();
-</span>?&gt;</code></pre>
+</span>?&gt;</span></code></pre>
 </div>
 <p class='demo'><a href='tuto1.php' target='_blank' class='demo'>[Demo]</a></p>
 Después de incluir el fichero de la clase, creamos el objeto FDPF.
@@ -25,6 +25,7 @@ El <a href='../doc/__construct.htm'>constructor</a> se usa aquí con sus valores 
 alargado y la unidad de medida es el milímetro. Se podría haber declarado explícitamente con:
 <div class="source">
 <pre><code>$pdf <span class="kw">= new </span>FPDF<span class="kw">(</span><span class="str">'P'</span><span class="kw">,</span><span class="str">'mm'</span><span class="kw">,</span><span class="str">'A4'</span><span class="kw">);
+</span>?&gt;
 </span></code></pre>
 </div>
 Es posible usar el formato apaisado (<code>L</code>), otros formatos de página (como <code>A3</code> y
@@ -41,6 +42,7 @@ Antes de que podamos imprimir texto, es obligatorio escoger una fuente con <a hr
 Escogemos Arial en negrita de tamaño 16:
 <div class="source">
 <pre><code>$pdf<span class="kw">-&gt;</span>SetFont<span class="kw">(</span><span class="str">'Arial'</span><span class="kw">,</span><span class="str">'B'</span><span class="kw">,</span>16<span class="kw">);
+</span>?&gt;
 </span></code></pre>
 </div>
 Podríamos haber especificado itálica con I, subrayado con U o normal con una cadena vacía (o
@@ -56,12 +58,14 @@ ubicará la posición actual después de imprimir la celda (a la derecha, debajo o 
 siguiente línea). Para añadir el borde, deberemos hacer esto:
 <div class="source">
 <pre><code>$pdf<span class="kw">-&gt;</span>Cell<span class="kw">(</span>40<span class="kw">,</span>10<span class="kw">,</span><span class="str">'¡Hola, Mundo!'</span><span class="kw">,</span>1<span class="kw">);
+</span>?&gt;
 </span></code></pre>
 </div>
 Para añadir una nueva celda a continuación, con el texto centrado e ir a la siguiente línea,
 escribiremos:
 <div class="source">
 <pre><code>$pdf<span class="kw">-&gt;</span>Cell<span class="kw">(</span>60<span class="kw">,</span>10<span class="kw">,</span><span class="str">'Hecho con FPDF.'</span><span class="kw">,</span>0<span class="kw">,</span>1<span class="kw">,</span><span class="str">'C'</span><span class="kw">);
+</span>?&gt;
 </span></code></pre>
 </div>
 Nota: el salto de línea puede provocarse también mediante <a href='../doc/ln.htm'>Ln()</a>.

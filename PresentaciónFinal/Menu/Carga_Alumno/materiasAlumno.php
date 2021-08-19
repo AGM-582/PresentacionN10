@@ -67,7 +67,7 @@ $respuesta3 = $con->query($query3);
                         $i = 1;
                         $siguienteAnio = 0;
                         while (($row3 = $respuesta3->fetch_assoc())) {
-                            //este if sirve para escribir los anios arriba del listado de materias
+                            //este if sirve para escribir los años arriba del listado de materias
                             if ($row3['anio'] > $siguienteAnio) {
                                 //echo '<br>';
                                 echo $row3['anio'] . 'º AÑO:';

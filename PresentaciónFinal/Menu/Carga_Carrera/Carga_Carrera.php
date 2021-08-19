@@ -28,23 +28,11 @@ include '../../conexion.php';
                         <input style="background:#E5E7E9;" type="text" name="nombre" placeholder="Ingrese nombre"
                             required>
                     </div>
-                    <!--<div class="input-box">
-                        <span class="details">Establecimiento:</span>
-                        <?php
-                        $query = $con->query("SELECT * FROM usuarios");
-                        ?>
-                        <!--SELECT DE LAS ESCUELAS CARGADAS EN BD-->
-                    <!-- <select name="idEscuela">
-                            <option value="0">Seleccione:</option>
-                            <?php
-                            while ($valores = mysqli_fetch_array($query)) {
-                            ?>
-                            <?php
-                                echo '<option value="' . $valores['id_usuario'] . '">' . $valores['nombres'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>-->
+                    <div class="input-box">
+                        <span class="details">Años de duración</span>
+                        <input style="background:#E5E7E9;" type="number" name="duracion" placeholder="Ingrese duración"
+                            required>
+                    </div>
 
                 </div>
                 <div class="button">
@@ -52,6 +40,24 @@ include '../../conexion.php';
                 </div>
         </div>
         </form>
+        <div>
+
+            <form action="subirCarreras.php" method="POST" enctype="multipart/form-data">
+
+                <table>
+                    <tr>
+                        <td class="letra" width="250"><strong>Subir archivo de carreras completo:</strong></td>
+                        <td><input type="file" name="foto" id="foto"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="enviar" value="SUBIR" class="boton">
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+        <br>
         <div class="boton">
 
             <a href="../menu.php"><button style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;"

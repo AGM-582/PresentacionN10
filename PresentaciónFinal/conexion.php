@@ -13,5 +13,5 @@ mysqli_set_charset($con, "utf8");
 if ($con->connect_error) {
     die("Conexión fallida: " . $con->connect_error);
 } else {
-    // echo "Conexión exitosa";
+    //echo "Conexión exitosa";
 }

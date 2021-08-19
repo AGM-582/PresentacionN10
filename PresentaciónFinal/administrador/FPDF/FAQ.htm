@@ -56,7 +56,6 @@ al comienzo de su script:
 <div class="doc-source">
 <pre><code>ob_end_clean();</code></pre>
 </div>
-Si todavía no lo ve, deshabilite zlib.output_compression en su php.ini y debería aparecer.
 </li>
 
 <li id='q3'>
@@ -212,7 +211,7 @@ Añade: target=”_blank” a tu link o form.
 
 <li id='q15'>
 <p><b>15.</b> <span class='question'>¿Cómo puedo enviar el PDF por correo electrónico?</span></p>
-Como cualquier otro archivo, pero una forma fácil es usar <a href="http://phpmailer.codeworxtech.com" target="_blank">PHPMailer</a>
+Como cualquier otro archivo, pero una forma fácil es usar <a href="https://github.com/PHPMailer/PHPMailer" target="_blank">PHPMailer</a>
 y esta es una forma de adjuntarlo: archivo desde la memoria:
 <div class="doc-source">
 <pre><code>$mail = new PHPMailer();
@@ -228,7 +227,7 @@ $mail-&gt;Send();</code></pre>
 No hay ningún límte en particular. Sin embargo, hay ciertas limitaciones:
 <br>
 <br>
-- El máximo de memoria reservada para los scripts en PHP es, por defecto, de 8 MB. Para documentos
+- El máximo de memoria reservada para los scripts en PHP es, por defecto, de 128 MB. Para documentos
 muy extensos, especialmente si contienen imágenes, este límite puede alcanzarse (ya que el fichero
 se construye en memoria). El límite se define en el fichero php.ini.
 <br>
@@ -247,12 +246,12 @@ Entonces, puede añadirles contenido.
 <li id='q18'>
 <p><b>18.</b> <span class='question'>Me gustaría hacer un motor de búsqueda en PHP e indexar ficheros PDF. ¿Puedo hacerlo con FPDF?</span></p>
 No. Pero existe una utilidad GPL escrita en C, pdftotext, que es capaz de extraer el texto de
-un PDF. Viene con el paquete <a href="http://www.foolabs.com/xpdf/" target="_blank">Xpdf</a>.
+un PDF. Viene con el paquete <a href="https://www.xpdfreader.com" target="_blank">Xpdf</a>.
 </li>
 
 <li id='q19'>
 <p><b>19.</b> <span class='question'>¿Puedo convertir una página HTML en PDF con FPDF?</span></p>
-No. Pero existe una utilidad GPL escrita en C, <a href="https://www.msweet.org/projects.php?Z1" target="_blank">HTMLDOC</a>,
+No. Pero existe una utilidad GPL escrita en C, <a href="https://www.msweet.org/htmldoc/" target="_blank">HTMLDOC</a>,
 que le permite hacerlo y da buen resultado.
 </li>
 

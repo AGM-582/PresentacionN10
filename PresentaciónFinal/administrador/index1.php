@@ -1,10 +1,10 @@
 <?php
-session_start();
+include '../conexion.php';
 date_default_timezone_set("America/Lima");
 $date = new DateTime();
 
 $fecha_inicio = $date->format('Y-m-d H:i:s');
-include '../conexion.php';
+
 ?>
 
 
@@ -19,7 +19,7 @@ include '../conexion.php';
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- Favicon - FIS -->
-    <link rel="shortcut icon" href="../M-ByTailorBrands.png">
+    <link rel="shortcut icon" href="../imagenes/Logo-fis.png">
 
     <title>ADMIN-Encuestas</title>
 
@@ -49,23 +49,24 @@ include '../conexion.php';
             <form class="form-inline my-2 my-lg-0" style="color: #fff">
 
                 <?php
-
-                if (isset($_SESSION['u_usuario'])) {
-                    echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
-
-
-                    echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
-                } else {
-                    header("Location: ../index.php");
-                }
+        session_start();
+        if (isset($_SESSION['u_usuario'])) {
+          echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
 
 
-                ?>
+          echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
+        } else {
+          header("Location: ../index.php");
+        }
+
+
+        ?>
 
             </form>
         </div>
     </nav>
 
+    <!-- Content Section -->
     <div class="container" style="margin-top: 30px;">
         <div class="row">
             <div class="col-md-12 row">
@@ -73,20 +74,9 @@ include '../conexion.php';
                     <h3>SISTEMA DE ENCUESTAS</h3>
                 </div>
                 <div class="col-md-2 col-xs-12">
-                    <div class="btn-group">
-                        <button class="float-right btn btn-primary" id="boton_agregar">
-                            Agregar Encuesta
-                        </button>
-                        <div class="col-md-5">
-                            <a href="../menu/menu.php"><button class="float-right btn btn-warning"
-                                    style="color: white;">
-                                    Regresar
-                                </button></a>
-                        </div>
-
-
-                    </div>
-
+                    <button class="float-right btn btn-primary" id="boton_agregar">
+                        Agregar Encuesta
+                    </button>
                 </div>
             </div>
         </div>
@@ -100,27 +90,21 @@ include '../conexion.php';
             </div>
         </div>
     </div>
-    </div>
     <!-- /Content Section -->
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <?php
-
-    ?>
-
-    <script src="js/encuestas.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-
+    <script src="js/encuestas.js"></script>
 
 </body>
 
 </html>
 
+<!-- Modal Agregar Nueva Encuesta -->
 <!-- Modal Agregar Nueva Encuesta -->
 <div class="modal fade" id="modal_agregar" role="dialog">
     <div class="modal-dialog">
@@ -153,18 +137,18 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="carrera" class="col-sm-3 col-form-label">carrera</label>
                         <?php
-                        $query = $con->query("SELECT * FROM carrera");
-                        ?>
+            $query = $con->query("SELECT * FROM carrera");
+            ?>
                         <div class="col-sm-9">
                             <select name="carrera">
                                 <option value="0">Seleccione:</option>
                                 <?php
-                                while ($valores = mysqli_fetch_array($query)) {
-                                ?>
+                while ($valores = mysqli_fetch_array($query)) {
+                ?>
                                 <?php
-                                    echo '<option value="' . $valores['id'] . '">' . $valores['nombre'] . '</option>';
-                                }
-                                ?>
+                  echo '<option value="' . $valores['id'] . '">' . $valores['nombre'] . '</option>';
+                }
+                ?>
                             </select>
                         </div>
                     </div>
@@ -173,18 +157,18 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="materia" class="col-sm-3 col-form-label">Materia</label>
                         <?php
-                        $query = $con->query("SELECT * FROM materia");
-                        ?>
+            $query = $con->query("SELECT * FROM materia");
+            ?>
                         <div class="col-sm-9">
                             <select name="materia">
                                 <option value="0">Seleccione:</option>
                                 <?php
-                                while ($valores = mysqli_fetch_array($query)) {
-                                ?>
+                while ($valores = mysqli_fetch_array($query)) {
+                ?>
                                 <?php
-                                    echo '<option value="' . $valores['id'] . '">' . $valores['nombre'] . '</option>';
-                                }
-                                ?>
+                  echo '<option value="' . $valores['id'] . '">' . $valores['nombre'] . '</option>';
+                }
+                ?>
                             </select>
                         </div>
                     </div>
@@ -213,8 +197,6 @@ include '../conexion.php';
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal Modificar Producto -->
 <div class="modal fade" id="modal_modificar" role="dialog">
@@ -265,24 +247,23 @@ include '../conexion.php';
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
 //en teoria esto es jquery
 $(document).ready(function() {
     $('#btnGuardar').click(function() {
         var datos = $('#Filtro')
             .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        //alert(datos);
-        //return false;
+        alert(datos);
+        return false;
         $.ajax({
             type: "POST",
             url: "ajax_encuesta/agregarEncuesta.php",
             data: datos,
             success: function(r) {
-                if (r == 1) {
-                    alert("Agregado con exito");
-                } else {
+                if (r) {
                     alert("Error al cargar");
+                } else {
+                    alert("Agregado con exito");
                 }
             }
         });
