@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(200deg, #1C2833, rgb(0, 0, 0));
+}
+
+.formulario {
+  width: 450px;
+  background: #24303c;
+  padding: 20px;
+  margin: auto;
+  margin-top: center;
+  border-radius: 10px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#Perfil{
+
+  text-align: center;
+}

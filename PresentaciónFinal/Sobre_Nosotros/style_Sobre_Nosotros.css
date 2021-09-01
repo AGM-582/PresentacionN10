@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #171a1d;
+}
+#Targetas{
+    display: flex;
+    justify-content: center;
+    background:  #1C2833;
+    box-shadow: 1px 1px 11px 0px #153553;
+    flex-wrap: wrap;
+    border-radius: 30px;
+    
+}
+.targeta img{
+    width: 50%;
+    border-radius: 50%;
+    box-shadow: 5px 5px 5px 0px #153553 ;
+    
+}
+.targeta{
+    width: 30%;
+    min-width: 300px;
+    margin: 15px 15px 15px 15px;
+    background: rgba(77,77,92,0.6);
+    padding: 5px;
+    text-align: center;
+    box-shadow: 3px 3px 14px 0px #153553 ;
+    border-radius: 30px;
+    
+}
+
+h2{
+    font-size: 20px;
+    color: #ccc;
+}
+
+.Profesion{
+    color:white;
+}
+
+.descripcion{
+    line-height: 30px;
+    color: white;
+    
+}
+.Redes{
+    color: white;
+
+}
+.icon{
+    font-size: 30px;
+}
+a{
+    color:  seagreen;
+}
+.boton{
+  display: block;
+  width: 100%;
+  padding: 15px;
+
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  background: #1C2833;
+  border-radius: 30px;
+  
+}
