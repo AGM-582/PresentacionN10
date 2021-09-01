@@ -1,21 +1,16 @@
 <?php
-session_start();
-if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
-	header("Location: ../index.php");
-  
-}
 
-	require ('../conexion.php');
+require('../conexion.php');
 
-	$id_encuesta = $_POST['id_encuesta'];
+$id_encuesta = $_POST['id_encuesta'];
 
-	$query10 = "SELECT * FROM encuestas WHERE id_encuesta = '$id_encuesta'";
-	$resultado10 = $con->query($query10);
-	$row10 = $resultado10->fetch_assoc();
+$query10 = "SELECT * FROM encuestas WHERE id_encuesta = '$id_encuesta'";
+$resultado10 = $con->query($query10);
+$row10 = $resultado10->fetch_assoc();
 
-  	$ids = array();
+$ids = array();
 
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -28,7 +23,7 @@ if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- Favicon - FIS -->
-    <link rel="shortcut icon" href="../imagenes/Logo-fis.png">
+    <link rel="shortcut icon" href="../M-ByTailorBrands.png">
 
 
     <title>Procesar</title>
@@ -50,13 +45,16 @@ if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
             </ul>
             <form class="form-inline my-2 my-lg-0" style="color: #fff">
 
-                <?php   
+                <?php
+				session_start();
+				if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
+					echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
 
-          		echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
-
-          		echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
-
-	       ?>
+					echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
+				} else {
+					header("Location: ../index.php");
+				}
+				?>
             </form>
         </div>
     </nav>
@@ -67,6 +65,7 @@ if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
 
 
 		$id_usuario = $_SESSION['id_usuario'];
+		echo $id_usuario;
 
 		$query5 = "SELECT * FROM usuarios_encuestas WHERE id_usuario = '$id_usuario' AND id_encuesta = '$id_encuesta'";
 		$resultado5 = $con->query($query5);
@@ -81,7 +80,7 @@ if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
 			$resultado6 = $con->query($query6);
 
 			if ($row10['estado'] == '1') {
-			 	for ($i = 1; $i <= 100; $i++) {
+				for ($i = 1; $i <= 100; $i++) {
 
 					if (isset($_POST[$i])) {
 						$ids[$i] = $_POST[$i];
@@ -99,9 +98,9 @@ if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
 							if ($resultado3) {
 								echo "Resultado ingresado";
 								echo "<br/>";
-							} else { 
+							} else {
 								echo "Error al ingresar resultado";
-							} 
+							}
 						}
 					}
 				}
@@ -110,7 +109,7 @@ if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
 			}
 		}
 
-		 ?>
+		?>
 
         <br />
         <a class="btn btn-primary" href="index.php">VOLVER</a>

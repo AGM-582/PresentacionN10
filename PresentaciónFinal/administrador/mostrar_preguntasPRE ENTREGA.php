@@ -125,38 +125,33 @@ $respuesta3 = $con->query($query3);
             </div>
 
             <div class="modal-body">
-                <form id="cargaPreguntas" method="POST">
-                    <input type="hidden" id="id_encuesta" name="id_encuesta" value="<?php echo $row['id_encuesta'] ?>">
-                    <!--<input type="checkbox" name="id_encuesta" checked value="<?php $id_encuesta ?>">-->
-                    <div class="form-group row">
-                        <label for="titulo" class="col-sm-3 col-form-label">Título</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título"
-                                autocomplete="off" autofocus>
-                        </div>
+                <div class="form-group row">
+                    <label for="titulo" class="col-sm-3 col-form-label">Título</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="titulo" placeholder="Título" autocomplete="off"
+                            autofocus>
                     </div>
-                    <div class="form-group row">
-                        <label for="titulo" class="col-sm-3 col-form-label">Tipo</label>
-                        <div class="col-sm-9">
-                            <select name="id_tipo_pregunta" class="form-control">
-                                <?php
-                                while ($row3 = $respuesta3->fetch_assoc()) {
-                                ?>
-                                <option id="id_tipo_pregunta" value="<?php echo $row3['id_tipo_pregunta'] ?>" required>
-                                    <?php echo $row3['nombre'] ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label for="titulo" class="col-sm-3 col-form-label">Tipo</label>
+                    <div class="col-sm-9">
+                        <select name="tipo_pregunta" class="form-control">
+                            <?php
+                            while ($row3 = $respuesta3->fetch_assoc()) {
+                            ?>
+                            <option id="id_tipo_pregunta" value="<?php echo $row3['id_tipo_pregunta'] ?>" required>
+                                <?php echo $row3['nombre'] ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
                     </div>
-                </form>
+                </div>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnGuardar">Agregar
-                    Pregunta</button>
+                <button type="button" class="btn btn-primary" onclick="agregarPregunta()">Agregar Pregunta</button>
             </div>
 
         </div>
@@ -194,30 +189,3 @@ $respuesta3 = $con->query($query3);
         </div>
     </div>
 </div>
-
-
-<script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#btnGuardar').click(function() {
-        var datos = $('#cargaPreguntas')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        //alert(datos);
-        //return false;
-        $.ajax({
-            type: "POST",
-            url: "registrarPreguntas.php",
-            data: datos,
-            success: function(r) {
-                if (r == 0) {
-                    alert("Agregado con exito");
-                } else {
-                    alert("Error al cargar");
-                }
-            }
-        });
-        //return false; //evita que se recargue y pierda los datos del form
-    });
-
-});
-</script>

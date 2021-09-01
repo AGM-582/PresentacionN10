@@ -78,7 +78,7 @@ include '../conexion.php';
                             Agregar Encuesta
                         </button>
                         <div class="col-md-5">
-                            <a href="../menu/menu.php"><button class="float-right btn btn-warning"
+                            <a href="../Menu/menu.php"><button class="float-right btn btn-warning"
                                     style="color: white;">
                                     Regresar
                                 </button></a>
