@@ -1,9 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
+/* if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
     header("Location: ../index.php");
   
-}
+}*/
+
   	require "../conexion.php";
   	$id_encuesta = $_GET['id_encuesta'];
  	$query2 = "SELECT * FROM preguntas WHERE id_encuesta = '$id_encuesta'";
