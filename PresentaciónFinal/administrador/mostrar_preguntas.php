@@ -131,8 +131,7 @@ $respuesta3 = $con->query($query3);
                     <div class="form-group row">
                         <label for="titulo" class="col-sm-3 col-form-label">Título</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título"
-                                autocomplete="off" autofocus>
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" autocomplete="off" autofocus>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -142,8 +141,8 @@ $respuesta3 = $con->query($query3);
                                 <?php
                                 while ($row3 = $respuesta3->fetch_assoc()) {
                                 ?>
-                                <option id="id_tipo_pregunta" value="<?php echo $row3['id_tipo_pregunta'] ?>" required>
-                                    <?php echo $row3['nombre'] ?></option>
+                                    <option id="id_tipo_pregunta" value="<?php echo $row3['id_tipo_pregunta'] ?>" required>
+                                        <?php echo $row3['nombre'] ?></option>
                                 <?php
                                 }
                                 ?>
@@ -197,27 +196,30 @@ $respuesta3 = $con->query($query3);
 
 
 <script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#btnGuardar').click(function() {
-        var datos = $('#cargaPreguntas')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        //alert(datos);
-        //return false;
-        $.ajax({
-            type: "POST",
-            url: "registrarPreguntas.php",
-            data: datos,
-            success: function(r) {
-                if (r == 0) {
-                    alert("Agregado con exito");
-                } else {
-                    alert("Error al cargar");
+    //en teoria esto es jquery
+    $(document).ready(function() {
+        $('#btnGuardar').click(function() {
+            var datos = $('#cargaPreguntas')
+                .serialize(); //serialize trabaja con el id del form y los names de los inputs
+            //alert(datos);
+            //return false;
+            $.ajax({
+                type: "POST",
+                url: "registrarPreguntas.php",
+                data: datos,
+                success: function(r) {
+                    if (r == 0) {
+                        alert("Error al cargar");
+                    } else {
+                        alert("Agregado con exito");
+                        $("#modal_agregar").modal("hide");
+                        mostrarPreguntas(id_encuesta);
+                        $("#titulo").val("");
+                    }
                 }
-            }
+            });
+            //return false; //evita que se recargue y pierda los datos del form
         });
-        //return false; //evita que se recargue y pierda los datos del form
-    });
 
-});
+    });
 </script>
