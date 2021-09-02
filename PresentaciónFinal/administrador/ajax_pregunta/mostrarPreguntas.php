@@ -32,7 +32,7 @@ while ($row = $resultado->fetch_assoc()) {
         <tbody>
             <tr>
                 <td>' . $row["id_pregunta"] . '</td>
-                <td><a href="mostrar_opciones.php?id_pregunta=' . $row['id_pregunta'] . '">' . $row['titulo'] . '</a></td>
+                <td><a href="mostrar_opciones.php?id_pregunta=' . $row['id_pregunta'] . '&id_encuesta=' . $row['id_encuesta'] . '">' . $row['titulo'] . '</a></td>
                 <td>' . $row["nombre"] . '</td>
                 <td>
                     <a class="btn btn-primary" href="mostrar_opciones.php?id_pregunta=' . $row['id_pregunta'] . '&id_encuesta=' . $row['id_encuesta'] . '" role="button">Agregar Opción</a>
