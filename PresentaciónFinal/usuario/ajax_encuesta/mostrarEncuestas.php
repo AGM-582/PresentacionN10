@@ -25,7 +25,7 @@ foreach ($Array_Materias as $Materia) {
     }
     $query .= ", $Materia";
 }
-$query .= ")";
+$query .= ") AND encuestas.id_encuesta NOT IN (SELECT id_encuesta FROM usuarios_encuestas WHERE id_usuario = '$_SESSION[id_usuario]' )";
 $resultado = $con->query($query);
 $tamaño = $resultado->num_rows;
 
