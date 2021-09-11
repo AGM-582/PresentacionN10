@@ -5,18 +5,18 @@ session_start();
   
 }*/
 
-  	require "../conexion.php";
-  	$id_encuesta = $_GET['id_encuesta'];
- 	$query2 = "SELECT * FROM preguntas WHERE id_encuesta = '$id_encuesta'";
-  	$respuesta2 = $con->query($query2);
-  	$query3 = "SELECT encuestas.titulo, encuestas.descripcion, preguntas.id_pregunta, preguntas.id_encuesta, preguntas.id_tipo_pregunta 
+require "../conexion.php";
+$id_encuesta = $_GET['id_encuesta'];
+$query2 = "SELECT * FROM preguntas WHERE id_encuesta = '$id_encuesta'";
+$respuesta2 = $con->query($query2);
+$query3 = "SELECT encuestas.titulo, encuestas.descripcion, preguntas.id_pregunta, preguntas.id_encuesta, preguntas.id_tipo_pregunta 
 		FROM preguntas
 		INNER JOIN encuestas
 		ON preguntas.id_encuesta = encuestas.id_encuesta
 		WHERE preguntas.id_encuesta = '$id_encuesta'";
-	$respuesta3 = $con->query($query3);
-	$row3 = $respuesta3->fetch_assoc();
- ?>
+$respuesta3 = $con->query($query3);
+$row3 = $respuesta3->fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -42,11 +42,11 @@ session_start();
             <ul class="navbar-nav mr-auto">
             </ul>
             <form class="form-inline my-2 my-lg-0" style="color: #fff">
-                <?php   
-	      	
+                <?php
+
                 echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
                 echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
-	       ?>
+                ?>
             </form>
         </div>
     </nav>
@@ -59,52 +59,47 @@ session_start();
                 <input type="hidden" id="id_encuesta" name="id_encuesta" value="<?php echo $id_encuesta ?>" />
                 <hr />
                 <?php
- 			    $i = 1; 
+                $i = 1;
                 while (($row2 = $respuesta2->fetch_assoc())) {
-                $id = $row2['id_pregunta'];
-                $query = "SELECT preguntas.id_pregunta, preguntas.titulo, preguntas.id_tipo_pregunta, opciones.id_opcion, opciones.valor
+                    $id = $row2['id_pregunta'];
+                    $query = "SELECT preguntas.id_pregunta, preguntas.titulo, preguntas.id_tipo_pregunta, opciones.id_opcion, opciones.valor
                     FROM opciones
                     INNER JOIN preguntas
                     ON preguntas.id_pregunta = opciones.id_pregunta
                     WHERE preguntas.id_pregunta = $id
                     ORDER BY opciones.id_pregunta, opciones.id_opcion";
-                $respuesta = $con->query($query);
+                    $respuesta = $con->query($query);
                 ?>
-                <h4 class="col-form-lg"><?php echo "$i. " . $row2['titulo'] ?></h4>
-                <?php //se agrega al bucle el resto de las opciones con su respectivo tipo
+                    <h4 class="col-form-lg"><?php echo "$i. " . $row2['titulo'] ?></h4>
+                    <?php //se agrega al bucle el resto de las opciones con su respectivo tipo
                     while (($row = $respuesta->fetch_assoc())) {
-                        if ($row['id_tipo_pregunta']==1) {
-                            ?><div>
-                    <label><input class="form-check-input" type="radio" name="<?php echo $row['id_pregunta'] ?>"
-                            value="<?php echo $row['id_opcion'] ?>" required>
-                        <?php echo $row['valor']?></label>
-                </div><?php
-                                        } elseif ($row['id_tipo_pregunta']==3){
-                                            ?>
-                <div class="form-check form-check-inline">
-                    <label><input class="form-check-input" type="checkbox" name="<?php echo $row['id_pregunta'] ?>"
-                            value="<?php echo $row['id_opcion'] ?>">
-                        <?php echo $row['valor'] ?></label>
-                </div><?php
-                                        } elseif($row['id_tipo_pregunta']==4){
-                                            ?>
-                <div>
-                    <label>
-                        <textarea class="col-auto" id="comentarios" name="<?php echo $row['id_pregunta'] ?>"
-                            value="<?php echo $row['id_opcion'] ?> "
-                            oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-                            style="resize:none">
+                        if ($row['id_tipo_pregunta'] == 1) {
+                    ?><div>
+                                <label><input class="form-check-input" type="radio" name="<?php echo $row['id_pregunta'] ?>" value="<?php echo $row['id_opcion'] ?>" required>
+                                    <?php echo $row['valor'] ?></label>
+                            </div><?php
+                                } elseif ($row['id_tipo_pregunta'] == 3) {
+                                    ?>
+                            <div class="form-check form-check-inline">
+                                <label><input class="form-check-input" type="checkbox" name="<?php echo $row['id_pregunta'] ?>[]" value="<?php echo $row['id_opcion'] ?>">
+                                    <?php echo $row['valor'] ?></label>
+                            </div><?php
+                                } elseif ($row['id_tipo_pregunta'] == 4) {
+                                    ?>
+                            <div>
+                                <label>
+                                    <textarea class="col-auto" id="comentarios" name="<?php echo $row['id_pregunta'] ?>" value="<?php echo $row['id_opcion'] ?> " oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style="resize:none">
                                                 </textarea><br>
-                    </label>
-                </div>
+                                </label>
+                            </div>
+                        <?php
+                                }
+                        ?>
                 <?php
-                        }
-                ?>
-                <?php 	
                     }
-			$i++;
-        }
-		 ?>
+                    $i++;
+                }
+                ?>
                 <br />
                 <input type="hidden" name="id_encuesta" value="<?php echo $id_encuesta ?>">
                 <input class="btn btn-primary" type="submit" value="Responder">

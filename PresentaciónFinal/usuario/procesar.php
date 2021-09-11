@@ -71,7 +71,7 @@ $ids = array();
 		$query5 = "SELECT * FROM usuarios_encuestas WHERE id_usuario = '$id_usuario' AND id_encuesta = '$id_encuesta'";
 		$resultado5 = $con->query($query5);
 		$tamaño = mysqli_num_rows($resultado5);
-	
+
 		if ($tamaño > 0) {
 			echo "Ya respondiste la encuesta";
 			echo "<br/>";
@@ -84,23 +84,54 @@ $ids = array();
 				for ($i = 1; $i <= 100; $i++) {
 
 					if (isset($_POST[$i])) {
-						$ids[$i] = $_POST[$i];
 
-						$id = $ids[$i];
+						if (is_array($_POST[$i])) {
+							$ids[$i] = $_POST[$i];
 
-						$query2 = "SELECT id_opcion, id_pregunta, valor FROM opciones WHERE id_opcion = '$ids[$i]'";
-						$resultado2 = $con->query($query2);
+							foreach ($ids[$i] as $id) {
 
-						if ($row2 = $resultado2->fetch_assoc()) {
-							$id_opcion = $row2['id_opcion'];
-							$query3 = "INSERT INTO resultados (id_opcion) 
+
+
+
+								$query2 = "SELECT id_opcion, id_pregunta, valor FROM opciones WHERE id_opcion = '$id'";
+								$resultado2 = $con->query($query2);
+
+								if ($row2 = $resultado2->fetch_assoc()) {
+									$id_opcion = $row2['id_opcion'];
+									$query3 = "INSERT INTO resultados (id_opcion) 
+								VALUES ('$id_opcion')";
+									$resultado3 = $con->query($query3);
+									if ($resultado3) {
+										echo "Resultado ingresado";
+										echo "<br/>";
+									} else {
+										echo "Error al ingresar resultado";
+									}
+								}
+							}
+						} else {
+
+
+							$ids[$i] = $_POST[$i];
+
+
+
+							$id = $ids[$i];
+
+							$query2 = "SELECT id_opcion, id_pregunta, valor FROM opciones WHERE id_opcion = '$ids[$i]'";
+							$resultado2 = $con->query($query2);
+
+							if ($row2 = $resultado2->fetch_assoc()) {
+								$id_opcion = $row2['id_opcion'];
+								$query3 = "INSERT INTO resultados (id_opcion) 
 							VALUES ('$id_opcion')";
-							$resultado3 = $con->query($query3);
-							if ($resultado3) {
-								echo "Resultado ingresado";
-								echo "<br/>";
-							} else {
-								echo "Error al ingresar resultado";
+								$resultado3 = $con->query($query3);
+								if ($resultado3) {
+									echo "Resultado ingresado";
+									echo "<br/>";
+								} else {
+									echo "Error al ingresar resultado";
+								}
 							}
 						}
 					}
