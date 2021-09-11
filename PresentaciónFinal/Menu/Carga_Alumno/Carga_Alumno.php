@@ -30,13 +30,11 @@ include '../../conexion.php';
 
                     <div class="input-box">
                         <span class="details">Nombre Completo</span>
-                        <input style="background:#E5E7E9;" type="text" name="nombre" id="nombre"
-                            placeholder="Ingrese su Nombre Completo">
+                        <input style="background:#E5E7E9;" type="text" name="nombre" id="nombre" placeholder="Ingrese su Nombre Completo">
                     </div>
                     <div class="input-box">
                         <span class="details">D.N.I.</span>
-                        <input style="background:#E5E7E9;" type="number" name="dni" id="dni"
-                            placeholder="Ingrese su Documento">
+                        <input style="background:#E5E7E9;" type="number" name="dni" id="dni" placeholder="Ingrese su Documento">
                     </div>
                     <!--<div class="input-box">
                         <span class="details">Correo</span>
@@ -68,13 +66,11 @@ include '../../conexion.php';
                     </div>
                     <div class="input-box">
                         <span class="details">Usuario</span>
-                        <input style="background:#E5E7E9;" type="text" name="usuario" id="usuario"
-                            placeholder="Ingrese un Usuario">
+                        <input style="background:#E5E7E9;" type="text" name="usuario" id="usuario" placeholder="Ingrese un Usuario">
                     </div>
                     <div class="input-box">
                         <span class="details">Año Lectivo</span>
-                        <input style="background:#E5E7E9;" type="date" name="anio" id="anio"
-                            placeholder="Ingrese el Año Lectivo">
+                        <input style="background:#E5E7E9;" type="date" name="anio" id="anio" placeholder="Ingrese el Año Lectivo">
                     </div>
                 </div>
                 <div class="button">
@@ -85,11 +81,8 @@ include '../../conexion.php';
         </form>
         <div class="boton">
 
-            <a href="../menu.php"><button style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;"
-                    class="boton"><i class="fas fa-arrow-left"></i> Volver Atrás</button></a>
-            <a href="materiasAlumno.php?"><button type="submit"
-                    style="width: 110px;padding: 5px;float: right;border-color: #000000;border-radius: 5px;"
-                    class="boton">Inscripcion Materias</button></a>
+            <a href="../menu.php"><button style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;" class="boton"><i class="fas fa-arrow-left"></i> Volver Atrás</button></a>
+            <a href="materiasAlumno.php?"><button type="submit" style="width: 110px;padding: 5px;float: right;border-color: #000000;border-radius: 5px;" class="boton">Inscripcion Materias</button></a>
 
         </div>
     </div>
@@ -101,28 +94,28 @@ include '../../conexion.php';
 
 
 <script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#btnGuardar').click(function() {
-        var datos = $('#cargaAlumno')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        /*alert(datos);
-        return false;*/
-        $.ajax({
-            type: "POST",
-            url: "registroAlumno2.php",
-            data: datos,
-            success: function(r) {
-                if (r == 1) {
-                    alert("Error al cargar");
+    //en teoria esto es jquery
+    $(document).ready(function() {
+        $('#btnGuardar').click(function() {
+            var datos = $('#cargaAlumno')
+                .serialize(); //serialize trabaja con el id del form y los names de los inputs
+            /*alert(datos);
+            return false;*/
+            $.ajax({
+                type: "POST",
+                url: "registroAlumno.php",
+                data: datos,
+                success: function(r) {
+                    if (r == 1) {
+                        alert("Error al cargar");
 
-                } else {
-                    alert("Agregado con exito");
+                    } else {
+                        alert("Agregado con exito");
+                    }
                 }
-            }
+            });
+            //return false; //evita que se recargue y pierda los datos del form
         });
-        //return false; //evita que se recargue y pierda los datos del form
-    });
 
-});
+    });
 </script>
