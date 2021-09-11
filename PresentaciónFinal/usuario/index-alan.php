@@ -2,10 +2,9 @@
 /*session_start();
 if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
     header("Location: ../index.php");
-  
 }*/
 
-date_default_timezone_set("America/Lima");
+date_default_timezone_get();
 $date = new DateTime();
 
 $fecha_inicio = $date->format('Y-m-d H:i:s');

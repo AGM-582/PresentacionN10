@@ -6,7 +6,7 @@ include("../../conexion.php");
 
 
 // Establecemos la zona horario
-date_default_timezone_set("America/Lima");
+date_default_timezone_get();
 $date = new DateTime();
 $fecha_inicio = $date->format('Y-m-d H:i:s');
 

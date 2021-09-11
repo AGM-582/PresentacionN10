@@ -366,7 +366,13 @@ function Footer()
 {
 	// To be implemented in your own inherited class
 }
-
+function ImprimirTexto($file){
+	//Se lee el archivo
+	$txt = file_get_contents($file);
+	$this->SetFont('Arial','',12);
+	//Se imprime
+	$this->MultiCell(0,5,$txt);
+}
 function PageNo()
 {
 	// Get current page number

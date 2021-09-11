@@ -5,7 +5,7 @@ if (isset($_POST['id_usuario']) && isset($_POST['titulo']) && isset($_POST['carr
     include("../../conexion.php");
 
     // Establecemos la zona horario
-    date_default_timezone_set("America/Lima");
+    date_default_timezone_get();
     $date = new DateTime();
     $fecha_inicio = $date->format('Y-m-d H:i:s');
 
