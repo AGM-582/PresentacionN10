@@ -16,7 +16,7 @@ $pdf = new PDF_Diag();
 $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 20);
 #("ruta",posicion horizontal,posicion vertical,ancho,largo) config imagen
-$pdf->Image("C:\SGBD\htdocs\PresentaciónFinal\PresentaciónFinal\Home_page\Normal10.png",0,0,50,50);
+$pdf->Image("..\Home_page\Normal10.png",0,0,50,50);
 /*ACÁ SE AGREGA EL TEXTO PREDEFINIDO*/
 //acá se crea la funcion para leer texto desde afuera e insertarlo en el pdf después
 ///*
