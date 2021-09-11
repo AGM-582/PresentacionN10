@@ -57,10 +57,8 @@ $respuesta3 = $con->query($query3);
                     <div class="container col-md-12">
 
                         <!--<div class="input-box">-->
-                        <label><input class="form-check-input" type="checkbox" style="display:none" checked="checked"
-                                name="idCarrera" value="<?php echo $idCarrera ?>"></input></label>
-                        <label><input class="form-check-input" type="checkbox" style="display:none" checked="checked"
-                                name="idAlumno" value="<?php echo $idAlumno ?>"></input></label>
+                        <label><input class="form-check-input" type="checkbox" style="display:none" checked="checked" name="idCarrera" value="<?php echo $idCarrera ?>"></input></label>
+                        <label><input class="form-check-input" type="checkbox" style="display:none" checked="checked" name="idAlumno" value="<?php echo $idAlumno ?>"></input></label>
 
                         <?php
 
@@ -74,11 +72,10 @@ $respuesta3 = $con->query($query3);
                             }
                         ?>
 
-                        <div class="radio">
-                            <label><input class="form-check-input" type="checkbox" name="materia[]"
-                                    value="<?php echo $row3['id'] ?>">
-                                <?php echo $row3['nombre'] ?></input></label>
-                        </div>
+                            <div class="radio">
+                                <label><input class="form-check-input" type="checkbox" name="materia[]" value="<?php echo $row3['id'] ?>">
+                                    <?php echo $row3['nombre'] ?></input></label>
+                            </div>
                         <?php
                             $siguienteAnio = $row3['anio'];
                         }
@@ -99,9 +96,7 @@ $respuesta3 = $con->query($query3);
 
         <div class="button">
 
-            <a href="Carga_Alumno2.php"><button
-                    style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;" class="boton"><i
-                        class="fas fa-arrow-left"></i> Volver Atrás</button></a>
+            <a href="Carga_Alumno.php"><button style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;" class="boton"><i class="fas fa-arrow-left"></i> Volver Atrás</button></a>
         </div>
 
     </div>
@@ -112,28 +107,28 @@ $respuesta3 = $con->query($query3);
 
 
 <script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#btnGuardar').click(function() {
-        var datos = $('#cargaMaterias')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        //alert(datos);
-        //return false;
-        $.ajax({
-            type: "POST",
-            url: "registroInscripciones.php",
-            data: datos,
-            success: function(r) {
-                if (r == 1) {
-                    alert("Error al cargar");
-                } else {
+    //en teoria esto es jquery
+    $(document).ready(function() {
+        $('#btnGuardar').click(function() {
+            var datos = $('#cargaMaterias')
+                .serialize(); //serialize trabaja con el id del form y los names de los inputs
+            //alert(datos);
+            //return false;
+            $.ajax({
+                type: "POST",
+                url: "registroInscripciones.php",
+                data: datos,
+                success: function(r) {
+                    if (r == 1) {
+                        alert("Error al cargar");
+                    } else {
 
-                    alert("Agregado con exito");
+                        alert("Agregado con exito");
+                    }
                 }
-            }
+            });
+            //return false; //evita que se recargue y pierda los datos del form
         });
-        //return false; //evita que se recargue y pierda los datos del form
-    });
 
-});
+    });
 </script>
