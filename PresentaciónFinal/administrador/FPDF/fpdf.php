@@ -359,11 +359,14 @@ function AddPage($orientation='', $size='', $rotation=0)
 
 function Header()
 {
-	$this->SetFont('Times','B',9);
+	$this->SetFont('Times','B',15);
 	$this->Line(10,10,206,10);
-	$this->Line(10,35.5,206,35.5);
+	$this->Line(10,37,206,37);
 	$this->Cell(30,25,'',0,0,'C');
-	$this->Cell(111,25,utf8_decode('ACÁ VA EL TEXTO DE LA INSTITUCIÓN CARPETA FPDF LINEA 366'),0,0,'C', $this->Image('..\Home_page\Normal10.png',10,12,30,20));
+	//va predeterminado el nombre de la institución
+	$this->Cell(135,25,utf8_decode('Escuela Normal Superior Nº 10 '),0,0,'C', $this->Image('..\Home_page\Normal10Escudo.png',10,11,35,25));
+	
+	$this->Cell(-135,40,utf8_decode('Anexo Comercial "San Antonio"'),0,0,'C');
 	$this->Ln(5);
 	//Se da un salto de línea de 25
 	$this->Ln(25);
@@ -373,7 +376,7 @@ function Footer()
 {
 	$this->SetY(-15);
     $this->SetFont('Times','I',8);
-    $this->Cell(0,10,'Este es el pie de página creado con el método Footer() de la clase creada PDF que hereda de FPDF','T',0,'C');
+    $this->Cell(0,10,utf8_decode('Almirante Brown y Calle Trípoli Tel: (0376) 4 - 447 - 403'),'T',0,'C');
 }
 function ImprimirTexto($file){
 	//Se lee el archivo

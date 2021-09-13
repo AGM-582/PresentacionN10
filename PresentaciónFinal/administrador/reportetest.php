@@ -1,20 +1,56 @@
 <?php
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+setlocale(LC_TIME, 'es_RA.UTF-8');
 require('FPDF/Diagrama.php');
 require('../conexion.php'); #corregir las rutas falopas
 $id_encuesta = $_GET['id_encuesta'];
 //$_GET['id_encuesta'];
-	
 /* Consulta para extraer título y descripción de la encuesta*/
 $query3 = "SELECT * FROM encuestas WHERE id_encuesta = '$id_encuesta'";
 $resultados3 = $con->query($query3);
 $row3 = $resultados3->fetch_assoc();
 $consulta = "SELECT * FROM preguntas WHERE id_encuesta = '$id_encuesta'";
 $resultados2 = $con->query($consulta);
+$query_ID_profesor = "SELECT idProfesor 
+					FROM materia
+					WHERE id = $row3[id_materia]";
 
+$resultado_id_profesor = $con->query($query_ID_profesor);
+$row_id_profesor = $resultado_id_profesor->fetch_assoc();
+
+$query_nombre_profesor = "SELECT nombre 
+						FROM profesor 
+						WHERE id = $row_id_profesor[idProfesor]";
+$resultado_nombre_profesor = $con->query($query_nombre_profesor);
+$row_nombre_profesor = $resultado_nombre_profesor->fetch_assoc();
+
+
+//date('l d \of F Y')
+$Fecha_Automatica = strftime('%e de %B de %Y');
+
+/*ACÁ SE GENERA EL TEXTO QUE VA EN LA PRESENTACIÓN DEL RESULTADO*/
+$file = fopen("textopredeterminado.txt", "w");
+fwrite($file, "Posadas, $Fecha_Automatica \n\n
+
+Apreciado/a Docente: $row_nombre_profesor[nombre]\n\n
+
+Se presenta a continuación, la Valoración de la Tarea Docente del Primer Semestre 2021, correspondiente a su asignatura.\n\n
+
+El mismo incluye, Fortalezas y Debilidades en cuanto a diferentes aspectos de la tarea docente. 
+Se utilizó una escala de satisfacción para valorar las opiniones, que fueron:\n\n
+
+* Muy bien\n
+* Bien Regular\n
+* Necesita mejorar.\n\n
+
+El mismo quizás no refleje el esfuerzo y el desafio que ha representado para Ud. desarrollar las clases en forma virtual, pero a pesar de todo, ha demostrado su competencia.
+En la seguridad de que los resultados serán para la mejora continua de su labor docente. \n");
+fclose($file);
+//////FIN DE LA PRESENTACIÓN//////
 
 $pdf = new PDF_Diag();
 $pdf->AddPage();
-$pdf->SetFont('Times', 'B', 20);
+$pdf->SetFont('Times', 'B', 22.5);
 #("ruta",posicion horizontal,posicion vertical,ancho,largo) config imagen
 //$pdf->Image("..\Home_page\Normal10.png",0,0,50,50);
 /*ACÁ SE AGREGA EL TEXTO PREDEFINIDO*/
@@ -26,16 +62,18 @@ $pdf->Cell(5,5,$pdf->ImprimirTexto('textopredeterminado.txt'),0,10);
 //$pdf->ImprimirTexto('textopredeterminado.txt');
 $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 20);
+//este sería el nombre de la encuesta o título
 $pdf->Cell(0, 5, utf8_decode($row3["titulo"]), 0, 15, 'C'); #utf8_decode acentos y eñes
 $pdf->Ln(8);
 
 while ($row2 = $resultados2->fetch_assoc()) {
 
-	$pdf->SetFont('Times', 'BIU', 12);
+	$pdf->SetFont('Times', 'BU', 14);
 	//$pdf->Image();#("ruta",posicion horizontal,posicion vertical,ancho,largo)
+	//título o nombre de la pregunta
 	$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #utf8_decode acentos y eñes
 	$pdf->Ln(8);
-	$pdf->SetFont('Times', '', 10);
+	$pdf->SetFont('Times', 'B', 11);
 	$valX = $pdf->GetX();
 	$valY = $pdf->GetY();
 
@@ -53,15 +91,17 @@ while ($row2 = $resultados2->fetch_assoc()) {
 		$cantidades[$i] = 0;
 		$cantidades[$i] = $row['count'];
 		$titulos[$i] = $row['valor'];
-		
-		$pdf->Cell(40, 5, utf8_decode($titulos[$i]));
-		$pdf->Cell(15, 5, utf8_decode("Votos: " . $cantidades[$i]), 0, 0, 'R');
-		$pdf->Ln();
-		$pdf->Ln(8);
+		//opción y valor elegido
+		$pdf->Cell(30, 5, utf8_decode($titulos[$i]));
+		$pdf->Cell(-14, 12, utf8_decode("Votos: " . $cantidades[$i]), 0, 0, 'R');
+		//$pdf->Ln(2);
+		$pdf->Ln(10);
 		$i++;
 	}
 	$data = array_combine($titulos, $cantidades);
 	$pdf->SetXY(90, $valY);
+	
+	//randomizar los colores
 	$col1 = array(100, 100, 255);
 	$col2 = array(255, 100, 100);
 	$col3 = array(255, 255, 100);
