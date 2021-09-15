@@ -2,7 +2,7 @@
 
 	include "../../conexion.php";
 	
-	date_default_timezone_get();;
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$date = new DateTime();
 
 	$fecha_comparacion = $date->format('Y-m-d H:i:s');

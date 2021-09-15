@@ -1,7 +1,7 @@
 <?php
 session_start();
 /*if (isset($_SESSION['u_usuario'])) {
-  header("Location: ../index.php");
+header("Location: ../index.php");
 }*/
 require "../conexion.php";
 $id_encuesta = $_GET['id_encuesta'];

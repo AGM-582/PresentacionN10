@@ -1,6 +1,12 @@
 <?php
-date_default_timezone_set('America/Argentina/Buenos_Aires');
-setlocale(LC_TIME, 'es_RA.UTF-8');
+//date_default_timezone_set('America/Argentina/Buenos_Aires');
+setlocale(LC_TIME, 'Spanish');
+//saqué de acá, porque me estaba dejando estúpido: https://stackoverflow.com/questions/27450346/convert-to-capital-letter-the-day-and-month-names-using-php-strftime
+$default_local_date = ucwords(utf8_encode(strftime('%e de %B de %Y')));//pasa todo a mayúsculas las primeras letas
+$date_connectors_capital = array('De', 'Del');
+$date_connectors_lower = array('de', 'del');//corrige los conectores
+$Fecha_Automatica = str_replace($date_connectors_capital, $date_connectors_lower, $default_local_date);
+
 require('FPDF/Diagrama.php');
 require('../conexion.php'); #corregir las rutas falopas
 $id_encuesta = $_GET['id_encuesta'];
@@ -26,7 +32,7 @@ $row_nombre_profesor = $resultado_nombre_profesor->fetch_assoc();
 
 
 //date('l d \of F Y')
-$Fecha_Automatica = strftime('%e de %B de %Y');
+
 
 /*ACÁ SE GENERA EL TEXTO QUE VA EN LA PRESENTACIÓN DEL RESULTADO*/
 $file = fopen("textopredeterminado.txt", "w");
@@ -54,63 +60,61 @@ $pdf->SetFont('Times', 'B', 22.5);
 #("ruta",posicion horizontal,posicion vertical,ancho,largo) config imagen
 //$pdf->Image("..\Home_page\Normal10.png",0,0,50,50);
 /*ACÁ SE AGREGA EL TEXTO PREDEFINIDO*/
-//acá se crea la funcion para leer texto desde afuera e insertarlo en el pdf después
-///*
-/*METER EL utf8_decode EN EL LUGAR CORRECTO*/
 $pdf->Cell(5,5,$pdf->ImprimirTexto('textopredeterminado.txt'),0,10);
-
-//$pdf->ImprimirTexto('textopredeterminado.txt');
 $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 20);
 //este sería el nombre de la encuesta o título
-$pdf->Cell(0, 5, utf8_decode($row3["titulo"]), 0, 15, 'C'); #utf8_decode acentos y eñes
+$pdf->Cell(0, 5, utf8_decode($row3["titulo"]), 0, 15, 'C');
 $pdf->Ln(8);
-
 while ($row2 = $resultados2->fetch_assoc()) {
-
 	$pdf->SetFont('Times', 'BU', 14);
-	//$pdf->Image();#("ruta",posicion horizontal,posicion vertical,ancho,largo)
+	$pdf->Ln(10);
 	//título o nombre de la pregunta
-	$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #utf8_decode acentos y eñes
+	$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #esta es la pregunta
 	$pdf->Ln(8);
-	$pdf->SetFont('Times', 'B', 11);
+	//$pdf->SetFont('Times', 'B', 11);
 	$valX = $pdf->GetX();
 	$valY = $pdf->GetY();
-
 	$id_pregunta = $row2['id_pregunta'];
-
-	$query = "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as count, opciones.valor FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '$id_pregunta' GROUP BY opciones.valor ORDER BY preguntas.id_pregunta";
+	$query = "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as count, opciones.valor 
+			FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta
+			INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '$id_pregunta' GROUP BY opciones.valor
+			ORDER BY preguntas.id_pregunta";
 	$resultados = $con->query($query);
-
 	/*TITULO*/
 	$cantidades = array();
 	$titulos = array();
-	$tamaño = array();
+	//$tamaño = array();
 	$i = 1;
 	while ($row = $resultados->fetch_assoc()) {
 		$cantidades[$i] = 0;
 		$cantidades[$i] = $row['count'];
-		$titulos[$i] = $row['valor'];
-		//opción y valor elegido
-		$pdf->Cell(30, 5, utf8_decode($titulos[$i]));
-		$pdf->Cell(-14, 12, utf8_decode("Votos: " . $cantidades[$i]), 0, 0, 'R');
+		$titulos[$i] = utf8_decode($row['valor']);
+		//opción y valor del lado izquierdo del pdf
+		//innecesario, pero se agrega si quieren...
+		//$pdf->Cell(30, 5, utf8_decode($titulos[$i]));
+		//$pdf->Cell(-14, 12, utf8_decode("Votos: " . $cantidades[$i]), 0, 0, 'R');
 		//$pdf->Ln(2);
-		$pdf->Ln(10);
+		//$pdf->Ln(10);
+		///////////////////
 		$i++;
 	}
+	//data contiene strings y numeros, los strings hay que achicarlos o limitarlos usando:
+	/*ACÁ IRÍA LA ACHICACIÓN */
 	$data = array_combine($titulos, $cantidades);
-	$pdf->SetXY(90, $valY);
-	
-	//randomizar los colores
-	$col1 = array(100, 100, 255);
-	$col2 = array(255, 100, 100);
-	$col3 = array(255, 255, 100);
-	$pdf->PieChart(100, 35, $data, '%l (%p)', array($col1, $col2, $col3));
-	$pdf->SetXY($valX, $valY + 40);
+	//acá se determina la posición horizontal del gráfico
+	$pdf->SetXY(20, $valY);
+	//randomizamos los colores
+	$col1 = array(rand(1,85), rand(86,171), rand(172,255));
+	$col2 = array(rand(172,255), rand(1,85), rand(86,171));
+	$col3 = array(rand(86,171),rand(172,255),rand(1,85));
+	//tamaño del gráfico es ancho primero y después alto junto con leyendas aparentemente
+	$pdf->PieChart(150, 75, $data, '%l (%p)', array($col1, $col2, $col3));
+	//acá se determina la posición vertical del gráfico, pero toma desde el segundo y no desde el primero
+	$pdf->SetXY($valX, $valY + 45);
+	$pdf->Ln(10);
 	$opciones = $i - 1;
 }
-//consulta
-
 //Bar diagram
 /*$pdf->SetFont('Arial', 'BIU', 12);
 $pdf->Cell(0, 5, '2 - Bar diagram', 0, 1);
