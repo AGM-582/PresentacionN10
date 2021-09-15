@@ -88,7 +88,7 @@ $row3 = $respuesta3->fetch_assoc();
                                     ?>
                             <div>
                                 <label>
-                                    <textarea class="col-auto" id="comentarios" name="<?php echo $row['id_pregunta'] ?>" value="<?php echo $row['id_opcion'] ?> " oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style="resize:none">
+                                    <textarea class="col-auto" id="comentarios" name="<?php echo $row['id_pregunta'] ?>" value="<?php echo $row['id_opcion'] ?>" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style="resize:none">
                                                 </textarea><br>
                                 </label>
                             </div>

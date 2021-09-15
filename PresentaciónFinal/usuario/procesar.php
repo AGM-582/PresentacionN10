@@ -81,17 +81,16 @@ $ids = array();
 			$resultado6 = $con->query($query6);
 
 			if ($row10['estado'] == '1') {
+
 				for ($i = 1; $i <= 100; $i++) {
 
 					if (isset($_POST[$i])) {
+
 
 						if (is_array($_POST[$i])) {
 							$ids[$i] = $_POST[$i];
 
 							foreach ($ids[$i] as $id) {
-
-
-
 
 								$query2 = "SELECT id_opcion, id_pregunta, valor FROM opciones WHERE id_opcion = '$id'";
 								$resultado2 = $con->query($query2);
@@ -99,7 +98,8 @@ $ids = array();
 								if ($row2 = $resultado2->fetch_assoc()) {
 									$id_opcion = $row2['id_opcion'];
 									$query3 = "INSERT INTO resultados (id_opcion) 
-								VALUES ('$id_opcion')";
+												   VALUES ('$id_opcion')";
+
 									$resultado3 = $con->query($query3);
 									if ($resultado3) {
 										echo "Resultado ingresado";
@@ -121,10 +121,20 @@ $ids = array();
 							$query2 = "SELECT id_opcion, id_pregunta, valor FROM opciones WHERE id_opcion = '$ids[$i]'";
 							$resultado2 = $con->query($query2);
 
+
+
 							if ($row2 = $resultado2->fetch_assoc()) {
-								$id_opcion = $row2['id_opcion'];
-								$query3 = "INSERT INTO resultados (id_opcion) 
-							VALUES ('$id_opcion')";
+								if ($row2["valor"] == "Texto_Index") {
+									$id_opcion = $row2['id_opcion'];
+									$Comentario = $row2["valor"];
+									$query3 = "INSERT INTO resultados (id_opcion,Comentarios) 
+											   VALUES ('$id_opcion', $Comentario)";
+								} else {
+									$id_opcion = $row2['id_opcion'];
+									$query3 = "INSERT INTO resultados (id_opcion) 
+											VALUES ('$id_opcion')";
+								}
+
 								$resultado3 = $con->query($query3);
 								if ($resultado3) {
 									echo "Resultado ingresado";
