@@ -46,6 +46,26 @@
                 </div>
         </div>
         </form>
+
+        <div>
+
+            <form action="subirProfesores.php" method="POST" enctype="multipart/form-data">
+
+                <table>
+                    <tr>
+                        <td class="letra" width="250"><strong>Subir archivo de profesores completo:</strong></td>
+                        <td><input type="file" name="foto" id="foto"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="enviar" value="SUBIR" class="boton">
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+        <br>
+        
         <div class="boton">
 
             <a href="../menu.php"><button style="width: 110px;padding: 5px;border-color: #000000;border-radius: 5px;"
