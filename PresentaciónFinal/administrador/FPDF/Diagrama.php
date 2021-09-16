@@ -47,14 +47,14 @@ class PDF_Diag extends PDF_Sector {
         $this->SetFont('Courier', '', 10);
         $x1 = ($XPage-50) + 2 * $radius + 4 * $margin;
         $x2 = $x1 + $hLegend + $margin;
-        $y1 = ($YDiag+30) - $radius + (2 * $radius - $this->NbVal*($hLegend + $margin)) / 2;
+        $y1 = ($YDiag+40) - $radius + (2 * $radius - $this->NbVal*($hLegend + $margin)) / 2;
         for($i=0; $i<$this->NbVal; $i++) {
             $this->SetFillColor($colors[$i][0],$colors[$i][1],$colors[$i][2]);
             //esto corre los cuadritos de las leyendas
-            $this->Rect($x1, $y1, $hLegend, $hLegend, 'DF');
+            $this->Rect($x1+50, $y1-45, $hLegend, $hLegend, 'DF');
             //acá corre la posición del texto de las leyendas
-            $this->SetXY($x2,$y1);
-            $this->Cell(0,$hLegend,$this->legends[$i]);
+            $this->SetXY($x2+50,$y1-45);
+            $this->Cell(0,$hLegend,$this->legends[$i],0,2);
             $y1+=$hLegend + $margin;
         }
     }

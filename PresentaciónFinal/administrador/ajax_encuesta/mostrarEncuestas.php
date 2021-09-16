@@ -8,9 +8,9 @@ $data = '
     <table class="table table-bordered table-hover table-condensed">
         <thead class="thead-dark">
             <tr>
-                <th>ID encuesta</th>
-                <th>Título</th>
-                <th width="100">Descripción</th>
+                <!--<th>ID encuesta</th>-->
+                <th>Nombre de la Encuesta</th>
+                <th width="100">Carrera o Materia</th>
                 <th>Estado</th>
                 <th>Fecha Inicio</th>
                 <th>Fecha Final</th>
@@ -26,7 +26,7 @@ while ($row = $resultado->fetch_assoc()) {
     $data .= '
         <tbody>
             <tr>
-                <td>' . $row["id_encuesta"] . '</td>
+                <!--<td>' . $row["id_encuesta"] . '</td>-->
                 <td><a href="mostrar_preguntas.php?id_encuesta=' . $row['id_encuesta'] . '">' . $row['titulo'] . '</a></td>
                 <td width="100">' . mb_strimwidth($row["descripcion"], 0, 30, "...") . '</td>
                 <td>' . $row["estado"] . '</td>

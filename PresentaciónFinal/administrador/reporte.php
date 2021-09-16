@@ -30,10 +30,6 @@ $query_nombre_profesor = "SELECT nombre
 $resultado_nombre_profesor = $con->query($query_nombre_profesor);
 $row_nombre_profesor = $resultado_nombre_profesor->fetch_assoc();
 
-
-//date('l d \of F Y')
-
-
 /*ACÁ SE GENERA EL TEXTO QUE VA EN LA PRESENTACIÓN DEL RESULTADO*/
 $file = fopen("textopredeterminado.txt", "w");
 fwrite($file, "Posadas, $Fecha_Automatica \n\n
@@ -68,10 +64,10 @@ $pdf->Cell(0, 5, utf8_decode($row3["titulo"]), 0, 15, 'C');
 $pdf->Ln(8);
 while ($row2 = $resultados2->fetch_assoc()) {
 	$pdf->SetFont('Times', 'BU', 14);
-	$pdf->Ln(10);
+	$pdf->Ln(14);
 	//título o nombre de la pregunta
 	$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #esta es la pregunta
-	$pdf->Ln(8);
+	$pdf->Ln(14);
 	//$pdf->SetFont('Times', 'B', 11);
 	$valX = $pdf->GetX();
 	$valY = $pdf->GetY();
@@ -84,7 +80,7 @@ while ($row2 = $resultados2->fetch_assoc()) {
 	/*TITULO*/
 	$cantidades = array();
 	$titulos = array();
-	//$tamaño = array();
+	$tamaño = array();
 	$i = 1;
 	while ($row = $resultados->fetch_assoc()) {
 		$cantidades[$i] = 0;
@@ -99,8 +95,6 @@ while ($row2 = $resultados2->fetch_assoc()) {
 		///////////////////
 		$i++;
 	}
-	//data contiene strings y numeros, los strings hay que achicarlos o limitarlos usando:
-	/*ACÁ IRÍA LA ACHICACIÓN */
 	$data = array_combine($titulos, $cantidades);
 	//acá se determina la posición horizontal del gráfico
 	$pdf->SetXY(20, $valY);
@@ -112,7 +106,7 @@ while ($row2 = $resultados2->fetch_assoc()) {
 	$pdf->PieChart(150, 75, $data, '%l (%p)', array($col1, $col2, $col3));
 	//acá se determina la posición vertical del gráfico, pero toma desde el segundo y no desde el primero
 	$pdf->SetXY($valX, $valY + 45);
-	$pdf->Ln(10);
+	$pdf->Ln(12);
 	$opciones = $i - 1;
 }
 //Bar diagram

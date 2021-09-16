@@ -20,7 +20,7 @@ include '../conexion.php';
     <!-- Favicon - FIS -->
     <link rel="shortcut icon" href="../M-ByTailorBrands.png">
 
-    <title>ADMIN-Encuestas</title>
+    <title>ADMIN-S.E.D.</title>
 
     <script type="text/javascript" language="javascript">
     history.pushState(null, null, location.href);
@@ -34,7 +34,7 @@ include '../conexion.php';
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="javascript:void(0)">Sistema de Encuestas</a>
+        <a class="navbar-brand" href="javascript:void(0)">Sistema de Estadística Docente</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
             <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@ include '../conexion.php';
         <div class="row">
             <div class="col-md-12 row">
                 <div class="col-md-10 col-xs-12">
-                    <h3>SISTEMA DE ENCUESTAS</h3>
+                    <h3>SISTEMA DE ESTADÍSTICA DOCENTE</h3>
                 </div>
                 <div class="col-md-2 col-xs-12">
                     <div class="btn-group">
@@ -135,22 +135,22 @@ include '../conexion.php';
             <div class="modal-body">
                 <form id="Filtro" method="POST">
                     <div class="form-group row">
-                        <label for="titulo" class="col-sm-3 col-form-label">Título</label>
+                        <label for="titulo" class="col-sm-3 col-form-label">Nombre de la Encuesta</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título"
-                                autocomplete="off" autofocus>
+                            <input type="text" class="form-control" id="titulo" name="titulo"
+                                placeholder="Nombre de la Encuesta" autocomplete="off" autofocus>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="descripcion" class="col-sm-3 col-form-label">Descripción</label>
+                        <label for="descripcion" class="col-sm-3 col-form-label">Carrera o Materia</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" id="descripcion" name="descripcion"
-                                placeholder="Descripción"></textarea>
+                                placeholder="Carrera o Materia"></textarea>
                         </div>
                     </div>
                     <!--SELECT DE LAS CARRERAS CARGADAS EN BD-->
                     <div class="form-group row">
-                        <label for="carrera" class="col-sm-3 col-form-label">carrera</label>
+                        <label for="carrera" class="col-sm-3 col-form-label">CARRERAS</label>
                         <?php
                         $query = $con->query("SELECT * FROM carrera");
                         ?>
@@ -170,7 +170,7 @@ include '../conexion.php';
 
                     <!---------------------------------SELECT MATERIAS EN  BD-------------------------------------------------->
                     <div class="form-group row">
-                        <label for="materia" class="col-sm-3 col-form-label">Materia</label>
+                        <label for="materia" class="col-sm-3 col-form-label">MATERIAS</label>
                         <?php
                         $query = $con->query("SELECT * FROM materia");
                         ?>
@@ -190,7 +190,7 @@ include '../conexion.php';
                     <!------------------------------------------------------------------------------------------------------------>
 
                     <div class="form-group row">
-                        <label for="fecha_final" class="col-sm-3 col-form-label">Fecha Final</label>
+                        <label for="fecha_final" class="col-sm-3 col-form-label">Fecha de Cierre</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="fecha_final" name="fecha_final"
                                 value="<?php echo $fecha_inicio ?>" autocomplete="off">
@@ -230,21 +230,23 @@ include '../conexion.php';
             <div class="modal-body">
 
                 <div class="form-group row">
-                    <label for="modificar_titulo" class="col-sm-3 col-form-label">Título</label>
+                    <label for="modificar_titulo" class="col-sm-3 col-form-label">Nombre de la Encuesta</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="modificar_titulo" placeholder="Título">
+                        <input type="text" class="form-control" id="modificar_titulo"
+                            placeholder="Nombre de la Encuesta">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="descripcion" class="col-sm-3 col-form-label">Descripción</label>
+                    <label for="descripcion" class="col-sm-3 col-form-label">Carrera o Materia</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="modificar_descripcion" placeholder="Descripción"></textarea>
+                        <textarea class="form-control" id="modificar_descripcion"
+                            placeholder="Carrera o Materia"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="fecha_final" class="col-sm-3 col-form-label">Fecha Final</label>
+                    <label for="fecha_final" class="col-sm-3 col-form-label">Fecha de Cierre</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="modificar_fecha_final" placeholder="Fecha de Cierre"
                             autocomplete="off" value="<?php echo $fecha_inicio ?>">
