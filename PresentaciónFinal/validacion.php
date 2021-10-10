@@ -19,16 +19,18 @@ if ($row_usuario = $resultado_usuario->fetch_assoc()) {
 		$_SESSION['u_usuario'] = $row_usuario['nombre_completo'];
 		$_SESSION['carrera'] = $row_usuario['id_carrera'];
 
-		header("Location: Menu/menu.php");
+		echo mysqli_query($con, $row_usuario['id_tipo_usuario']);
+		/*header("Location: Menu/menu.php");*/
 	} else if ($row_usuario['id_tipo_usuario'] == '2') {
 
 		$_SESSION['id_usuario'] = $row_usuario['id_usuario'];
 		$_SESSION['u_usuario'] = $row_usuario['nombre_completo'];
-
-		header("Location: usuario/index.php");
+		echo mysqli_query($con, $row_usuario['id_tipo_usuario']);
+		/*header("Location: usuario/index.php");*/
 	}
 } else {
-	header("Location: login.php");
+	/*header("Location: login.php");*/
+	echo 0;
 }
 
 
