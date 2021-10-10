@@ -82,9 +82,9 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                 <!--////////////////////////-->
                 <form class="form-signin" action="validacion.php" method="POST">
                     <span id="reauth-email" class="reauth-email"></span>
-                    <label class="form-label text-light">Numero de Identificacion:</label>
-                    <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus
-                        name="id_usuario">
+                    <label class="form-label text-light">Correo:</label>
+                    <input type="text" id="inputEmail" class="form-control" placeholder="Ingrese su correo" required
+                        autofocus name="id_usuario">
                     <br>
                     <label class="form-label text-light">Contraseña:</label>
                     <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required
