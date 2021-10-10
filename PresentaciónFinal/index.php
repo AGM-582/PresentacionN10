@@ -84,26 +84,18 @@
                         Nuestras Redes Sociales!
                     </p>
                     <section class="mb-4">
-                        <!-- Facebook -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank"
-                            href="https://www.facebook.com" role="button"><i class="fab fa-facebook-f"></i></a>
+
 
                         <!-- Twitter -->
                         <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Twitter.com"
                             role="button"><i class="fab fa-twitter"></i></a>
 
-                        <!-- Google -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Google.com"
-                            role="button"><i class="fab fa-google"></i></a>
-
-                        <!-- Instagram -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank"
-                            href="https://www.Instagram.com" role="button"><i class="fab fa-instagram"></i></a>
 
 
-                        <!-- Github -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Github.com"
-                            role="button"><i class="fab fa-github"></i></a>
+
+                        <!-- Linkedin -->
+                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                                class="fab fa-linkedin-in"></i></a>
 
                         <div>
                             <p>
