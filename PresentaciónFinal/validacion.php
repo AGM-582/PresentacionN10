@@ -17,7 +17,7 @@ if ($row_usuario = $resultado_usuario->fetch_assoc()) {
 
 		$_SESSION['id_usuario'] = $row_usuario['id_usuario'];
 		$_SESSION['u_usuario'] = $row_usuario['nombre_completo'];
-		$_SESSION['carrera'] = $row_usuario['carrera'];
+		$_SESSION['carrera'] = $row_usuario['id_carrera'];
 
 		header("Location: Menu/menu.php");
 	} else if ($row_usuario['id_tipo_usuario'] == '2') {

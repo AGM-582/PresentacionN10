@@ -13,7 +13,7 @@ $tipoUsuario = '2';
 // $sexo = $_POST['sexo'];
 
 echo $nombre;
-$query = "INSERT INTO usuarios (nombre_completo,dni,carrera,correo,id_tipo_usuario) VALUES('$nombre', '$dni','$carrera','$correo','$tipoUsuario')";
+$query = "INSERT INTO usuarios (nombre_completo,dni,id_carrera,correo,id_tipo_usuario) VALUES('$nombre', '$dni','$carrera','$correo','$tipoUsuario')";
 
 //$resultado = $con->query($query);
 echo mysqli_query($con, $query);
