@@ -20,7 +20,7 @@ include '../conexion.php';
     <!-- Favicon - FIS -->
     <link rel="shortcut icon" href="../M-ByTailorBrands.png">
 
-    <title>ADMIN-S.E.D.</title>
+    <title>ADMIN-S.E.E</title>
 
     <script type="text/javascript" language="javascript">
     history.pushState(null, null, location.href);
@@ -155,7 +155,7 @@ include '../conexion.php';
                         $query = $con->query("SELECT * FROM carrera");
                         ?>
                         <div class="col-sm-9">
-                            <select name="carrera">
+                            <select name="carrera" class="form-control">
                                 <option value="0">Seleccione:</option>
                                 <?php
                                 while ($valores = mysqli_fetch_array($query)) {
@@ -175,7 +175,7 @@ include '../conexion.php';
                         $query = $con->query("SELECT * FROM materia");
                         ?>
                         <div class="col-sm-9">
-                            <select name="materia">
+                            <select name="materia" class="form-control">
                                 <option value="0">Seleccione:</option>
                                 <?php
                                 while ($valores = mysqli_fetch_array($query)) {

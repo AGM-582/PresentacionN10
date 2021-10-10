@@ -16,8 +16,8 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
 
     <!-- Bootstrap CSS -->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <link href="loginn.css" rel="stylesheet">
 
 
     <title>Inicio de Sesión</title>
@@ -72,7 +72,7 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
             <!--Seccion de Logo-->
             <div class="col-lg-5">
                 <div class="px-lg-5 pt-lg-2 pb-lg-3 p-2">
-                    <img class="imag" src="Inicio_Sesion/Normal10.png">
+                    <img class="d-block w-100" src="Inicio_Sesion/Normal10.png">
                 </div>
                 <!--Seccion de Bienvenidos-->
                 <div class="px-lg-5 py-lg-0 p-3 ">
@@ -101,18 +101,23 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                     <!--SECTOR DE LOS BOTONES RE LOCOS-->
                     <br>
                     <div class="align-center">
-                        <div class="btn-group btn-group-lg align-content-center" role="group" aria-label="button group">
+                        <div class="btn-group btn-group-sm" style="align-content:center;" role="group"
+                            aria-label="button group">
                             <div>
                                 <div class="py-lg-1 p-3">
-                                    <a href="index.php"><button
-                                            class="btn btn-secondary btn-lg btn-info btn-center-block btn-signin"
-                                            style="width: 300px;" type="button">Regresar</button></a>
+                                    <a href="index.php"><button class="btn btn-warning btn-block"
+                                            type="button">Regresar</button></a>
                                 </div>
                             </div>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
                             <div>
                                 <div class="py-lg-1 p-3">
-                                    <button class="btn btn-primary btn-lg btn-primary btn-center-block btn-signin"
-                                        style="width: 300px;" type="submit">Ingresar</button>
+                                    <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
                                 </div>
                             </div>
                         </div>
@@ -228,16 +233,16 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor&display=swap" rel="stylesheet">
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">-->
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">-->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
-    </script>
+    </script>-->
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

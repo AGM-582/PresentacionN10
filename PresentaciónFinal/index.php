@@ -28,7 +28,7 @@
             <!--<a href="Sistema_ED/Carga_Alumno/Carga_Alumno.html">Carga Alumno</a>
             <a href="Sistema_ED/Carga_Profesor/Carga_Profesor.html">Carga Profesor</a>
             <a href="Sistema_ED/Carga_Materia/Carga_Materia.html">Carga Materia</a>-->
-            <a href="contactanos.html">Contáctanos</a>
+            <a href="contactanos.php">Contáctanos</a>
             <!--<a href="Sistema_ED/administrador/mostrar_preguntas.php">ABM_Preguntas</a>-->
             <a href="login.php"><button type="submit" class="btn btn-primary">Iniciar Sesión</button></a>
 
@@ -43,7 +43,7 @@
 
     <section id="Banner">
         <div class="Contenido_Banner">
-            <h3>Sistema de Evaluación Docente 2021</h3>
+            <h3>Sistema de Encuesta y Estadística</h3>
 
         </div>
     </section>

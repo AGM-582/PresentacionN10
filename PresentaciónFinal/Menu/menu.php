@@ -8,7 +8,7 @@ include '../conexion.php';
 
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="menuEstilos.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/dd0442ec5c.js" crossorigin="anonymous"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -43,7 +43,8 @@ include '../conexion.php';
             </a>
 
             <a href="Carga_Profesor/Carga_Profesor.php">
-                <button style="width: 200px;" class="btn btn-primary" type="button"><i class="fas fa-chalkboard-teacher"></i> Alta de Profesor</button>
+                <button style="width: 200px;" class="btn btn-primary" type="button"><i
+                        class="fas fa-chalkboard-teacher"></i> Alta de Profesor</button>
             </a>
             <a href="Carga_Materia/Carga_Materia.php">
                 <button style="width: 200px;" class="btn btn-primary" type="button"><i class="fas fa-book"></i> Alta de
@@ -94,7 +95,8 @@ include '../conexion.php';
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" style="backdrop-filter: blur(2px);" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" style="backdrop-filter: blur(2px);" id="exampleModal" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content" style="background:  #1C2833">
                         <div class="modal-header">
@@ -104,19 +106,24 @@ include '../conexion.php';
                         <div class="modal-body" style="color: white">
                             <!--<p>Los <a href="#" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">botones</a>  </p>
               <hr>-->
-                            <button style="width: 200px;" class="btn btn-primary" type="button"><i class="fas fa-book"></i> Alta de Carrera</button><br>
+                            <button style="width: 200px;" class="btn btn-primary" type="button"><i
+                                    class="fas fa-book"></i> Alta de Carrera</button><br>
                             <p>Nos dirige al formulario de carreras, para poder registrarla en el sistema.</p>
                             <hr>
-                            <button style="width: 200px;" class="btn btn-primary" type="button"><i class="fas fa-chalkboard-teacher"></i> Alta de Profesor</button><br>
+                            <button style="width: 200px;" class="btn btn-primary" type="button"><i
+                                    class="fas fa-chalkboard-teacher"></i> Alta de Profesor</button><br>
                             <p>Nos dirige al formulario de profesor, para poder registrarlo en el sistema.</p>
                             <hr>
-                            <button style="width: 200px;" class="btn btn-primary" type="button"><i class="fas fa-book"></i> Alta de Materia</button><br>
+                            <button style="width: 200px;" class="btn btn-primary" type="button"><i
+                                    class="fas fa-book"></i> Alta de Materia</button><br>
                             <p>Nos dirige al formulario de materia, para poder registrarlo en el sistema.</p>
                             <hr>
-                            <button style="width: 200px;" class="btn btn-primary" type="button"><i class="fas fa-user-graduate"></i> Alta de Alumno</button><br>
+                            <button style="width: 200px;" class="btn btn-primary" type="button"><i
+                                    class="fas fa-user-graduate"></i> Alta de Alumno</button><br>
                             <p>Nos dirige a el formulario de alumno, para poder registrarlo en el sistema.</p>
                             <hr>
-                            <button style="width: 200px" class="btn btn-primary" type="button"><i class="fas fa-clipboard-list"></i> Encuestas</button>
+                            <button style="width: 200px" class="btn btn-primary" type="button"><i
+                                    class="fas fa-clipboard-list"></i> Encuestas</button>
                             <p>Nos permite Crear/Diseñar la encuesta para que el alumno pueda evaluar al docente.</p>
                         </div>
                         <div class="modal-footer">
@@ -128,12 +135,14 @@ include '../conexion.php';
             </div>
             <hr style="width: 200px;">
             <!-- Button trigger modal -->
-            <button type="button" class="float-right btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" class="float-right btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">
                 <i class="fas fa-sign-out-alt"></i> Salir de Sesión
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" style="backdrop-filter: blur(2px);" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop" style="backdrop-filter: blur(2px);" data-bs-backdrop="static"
+                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content" style="background:  #1C2833">
                         <div class="modal-header">
@@ -156,7 +165,8 @@ include '../conexion.php';
         </div>
 
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
 </body>
 
