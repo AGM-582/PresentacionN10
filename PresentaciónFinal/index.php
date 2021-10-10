@@ -52,20 +52,20 @@
     <section id="iconos">
         <div class="Contenido_iconos">
             <div>
-                <i class="fas fa-shipping-fast fa-5x"></i>
+                <i class="fas fa-shipping-fast fa-2x"></i>
                 <h6>Rápido</h6>
-                <p>Más rápido que patada de chancho.</p>
+                <!--<p>Más rápido que patada de chancho.</p>-->
             </div>
             <div>
-                <i class="fab fa-accessible-icon fa-5x"></i>
+                <i class="fas fa-universal-access fa-2x"></i>
                 <h6>Accesible</h6>
-                <p>Stephen Hawking Approves This.</p>
+                <!--<p>Stephen Hawking Approves This.</p>-->
             </div>
             <div id="Responsive">
-                <i class="fas fa-desktop fa-5x"></i>
-                <i class="fas fa-mobile fa-5x"></i>
+                <i class="fas fa-desktop fa-2x"></i>
+                <i class="fas fa-mobile fa-2x"></i>
                 <h6>Responsive</h6>
-                <p>Disponible en todas las plataformas</p>
+                <!--<p>Disponible en todas las plataformas</p>-->
             </div>
 
         </div>
@@ -85,54 +85,28 @@
                     </p>
                     <section class="mb-4">
                         <!-- Facebook -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.facebook.com" role="button"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank"
+                            href="https://www.facebook.com" role="button"><i class="fab fa-facebook-f"></i></a>
 
                         <!-- Twitter -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Twitter.com" role="button"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Twitter.com"
+                            role="button"><i class="fab fa-twitter"></i></a>
 
                         <!-- Google -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Google.com" role="button"><i class="fab fa-google"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Google.com"
+                            role="button"><i class="fab fa-google"></i></a>
 
                         <!-- Instagram -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Instagram.com" role="button"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank"
+                            href="https://www.Instagram.com" role="button"><i class="fab fa-instagram"></i></a>
 
 
                         <!-- Github -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Github.com" role="button"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Github.com"
+                            role="button"><i class="fab fa-github"></i></a>
                     </section>
 
-                    <section>
-                        <form>
 
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-auto">
-                                    <p class="pt-2">
-                                        <strong>Suscribete a nuestra Compañía</strong>
-                                    </p>
-                                </div>
-
-                                <div class="col-md-5 col-12">
-                                    <div class="form-outline form-white mb-4">
-                                        <input type="email" id="Correo" class="form-control" />
-                                        <label class="form-label">Correo Electrónico</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-outline-light mb-4">
-                                        Suscribite
-                                    </button>
-                                </div>
-
-                            </div>
-                            <div>
-                                <p>
-                                    No somos una empresa, somos gente haciendo cosas.
-                                </p>
-                            </div>
-                        </form>
-
-                    </section>
                 </div>
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
