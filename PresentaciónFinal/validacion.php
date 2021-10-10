@@ -8,31 +8,31 @@ $clave 	= $_POST['clave'];
 echo $clave;
 include("conexion.php");
 
-$query = "SELECT * FROM usuarios WHERE id_usuario = '$id_usuario' AND clave = '$clave'";
-$resultado = $con->query($query);
+$query_usuario = "SELECT * FROM usuarios WHERE correo = '$id_usuario' AND dni = '$clave'";
+$resultado_usuario = $con->query($query_usuario);
 
-$query2 = "SELECT * FROM alumno WHERE id = '$id_usuario' AND usuario = '$clave'";
-$resultado2 = $con->query($query2);
+if ($row_usuario = $resultado_usuario->fetch_assoc()) {
 
+	if ($row_usuario['id_tipo_usuario'] == '1') {
 
+		$_SESSION['id_usuario'] = $row_usuario['id_usuario'];
+		$_SESSION['u_usuario'] = $row_usuario['nombre_completo'];
+		$_SESSION['carrera'] = $row_usuario['carrera'];
 
-if ($row = $resultado->fetch_assoc()) {
-
-
-	if ($row['id_tipo_usuario'] == '1') {
-		$_SESSION['id_usuario'] = $row['id_usuario'];
-		$_SESSION['u_usuario'] = $row['nombres'];
 		header("Location: Menu/menu.php");
+	} else if ($row_usuario['id_tipo_usuario'] == '2') {
+
+		$_SESSION['id_usuario'] = $row_usuario['id_usuario'];
+		$_SESSION['u_usuario'] = $row_usuario['nombre_completo'];
+
+		header("Location: usuario/index.php");
 	}
-} else if ($row2 = $resultado2->fetch_assoc()) {
-	$_SESSION['id_usuario'] = $row2['id'];
-	$_SESSION['u_usuario'] = $row2['nombre'];
-	header("Location: usuario/index.php");
 } else {
-	header("Location: index.php");
+	header("Location: login.php");
 }
 
-if (!$query) {
+
+if (!$query_usuario) {
 	printf("Error: %s\n", mysqli_error($conn));
 	exit();
 }

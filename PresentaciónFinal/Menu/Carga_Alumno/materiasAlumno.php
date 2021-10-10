@@ -1,6 +1,6 @@
 <?php
 include '../../conexion.php';
-$query = "SELECT carrera, id FROM alumno ORDER BY id DESC LIMIT 1";
+$query = "SELECT carrera, id_usuario FROM usuarios ORDER BY id_usuario DESC LIMIT 1";
 
 $resultado = $con->query($query);
 

@@ -65,12 +65,8 @@ include '../../conexion.php';
                         </select>
                     </div>
                     <div class="input-box">
-                        <span class="details">Usuario</span>
-                        <input style="background:#E5E7E9;" type="text" name="usuario" id="usuario" placeholder="Ingrese un Usuario">
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Año Lectivo</span>
-                        <input style="background:#E5E7E9;" type="date" name="anio" id="anio" placeholder="Ingrese el Año Lectivo">
+                        <span class="details">Correo</span>
+                        <input style="background:#E5E7E9;" type="text" name="correo" id="correo" placeholder="Ingrese el E-Mail">
                     </div>
                 </div>
                 <div class="button">

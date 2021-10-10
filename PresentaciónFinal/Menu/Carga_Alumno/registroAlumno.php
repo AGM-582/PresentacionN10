@@ -8,13 +8,12 @@ $dni = $_POST['dni'];
 //$correo = $_POST['correo'];
 //$escuela = $_POST['escuela'];
 $carrera = $_POST['carrera'];
-$usuario = $_POST['usuario'];
-$anio = $_POST['anio'];
+$correo = $_POST['correo'];
 $tipoUsuario = '2';
 // $sexo = $_POST['sexo'];
 
 echo $nombre;
-$query = "INSERT INTO alumno (nombre,dni,carrera,usuario,anio,idTipoUsuario) VALUES('$nombre', '$dni','$carrera','$usuario','$anio','$tipoUsuario')";
+$query = "INSERT INTO usuarios (nombre_completo,dni,carrera,correo,id_tipo_usuario) VALUES('$nombre', '$dni','$carrera','$correo','$tipoUsuario')";
 
 //$resultado = $con->query($query);
 echo mysqli_query($con, $query);
