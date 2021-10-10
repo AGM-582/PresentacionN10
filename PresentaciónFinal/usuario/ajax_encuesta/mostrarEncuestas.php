@@ -25,7 +25,7 @@ foreach ($Array_Materias as $Materia) {
     }
     $query .= ", $Materia";
 }
-$query .= ") AND encuestas.id_encuesta NOT IN (SELECT id_encuesta FROM usuarios_encuestas WHERE id_usuario = '$_SESSION[id_usuario]' )";
+$query .= ", 0) AND encuestas.id_encuesta NOT IN (SELECT id_encuesta FROM usuarios_encuestas WHERE id_usuario = '$_SESSION[id_usuario]' )";
 $resultado = $con->query($query);
 if ($resultado)
     $tamaño = mysqli_num_rows($resultado);
