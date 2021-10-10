@@ -26,6 +26,13 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
 
 <body style="background-color:#1C2833;">
     <!--class="bg-dark"     bg-dark fondo de negro todo html-->
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+
     <section>
         <!--------------------------------------------------------------------->
         <div class="row g-0">
@@ -80,7 +87,7 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                 </div>
                 <!--Seccion del Formulario-->
                 <!--////////////////////////-->
-                <form class="form-signin" action="validacion.php" method="POST">
+                <form class="form-signin" id="validacion" method="POST">
                     <span id="reauth-email" class="reauth-email"></span>
                     <label class="form-label text-light">Correo:</label>
                     <input type="text" id="inputEmail" class="form-control" placeholder="Ingrese su correo" required
@@ -92,12 +99,9 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                     <br><a href="contactanos.php" target="_blank"
                         class="form-check-label text-muted text-decoration-blue">¿Has Olvidado Tu Contraseña?</a>
                     <div id="remember" class="checkbox">
-                        <!--
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                 -->
                     </div>
+
+
                     <!--SECTOR DE LOS BOTONES RE LOCOS-->
                     <br>
                     <div class="align-center">
@@ -117,7 +121,7 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                             &nbsp;
                             <div>
                                 <div class="py-lg-1 p-3">
-                                    <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
+                                    <button class="btn btn-primary btn-block" id="ingresar">Ingresar</button>
                                 </div>
                             </div>
                         </div>
@@ -127,22 +131,7 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
               <input type="submit" name="" value="Ingresar">
             -->
             </form>
-            <!-- /form -->
-            <!--<form class="px-lg-5 py-lg-0 p-3 ">
-            <div class="mb-1 ">
-              <label class="form-label text-light" >D.N.I.:</label>
-              <input name="Documento" placeholder="Ingrese su Documento" type="number" class="form-control" id="Documento">
-              <div id="Documento" class="form-text">(Ingrese Su Documento Sin Puntos)</div>
-            </div>
 
-            <div class="mb-4 ">
-              <label  class="form-label text-light">Contraseña:</label>
-              <input type="password" placeholder="Ingrese su Contraseña" class="form-control" id="Contraseña" name="Contraseña">
-              <a href="https://www.google.com/?hl=es" target="_blank" class="form-check-label text-muted text-decoration-none">¿Has Olvidado Tu Contraseña?</a>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100 ">Iniciar Sesión</button>
-          </form>-->
         </div>
         </div>
 
@@ -199,23 +188,40 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor&display=swap" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">-->
-    <!-- Material Design Bootstrap -->
-    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">-->
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
-    </script>-->
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>
+
+
+<script type="text/javascript">
+//en teoria esto es jquery
+$(document).ready(function() {
+    $('#ingresar').click(function() {
+        var datos = $('#validacion')
+            .serialize(); //serialize trabaja con el id del form y los names de los inputs
+        /*alert(datos);
+        return false;*/
+        $.ajax({
+                type: "POST",
+                url: "validacion.php",
+                data: datos,
+            })
+            .then(function(response) {
+                window.location.replace("Menu/menu.php");
+            });
+    });
+});
+/*success: function(response) {
+            if (response == 1) {
+                window.location.replace("Menu/menu.php");
+            } else(
+                alert("Contrasenia incorrecta")
+            )
+        }
+    });*/
+//return false; //evita que se recargue y pierda los datos del form
+/* });
+
+});*/
+</script>
