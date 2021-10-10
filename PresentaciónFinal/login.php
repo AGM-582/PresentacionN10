@@ -158,55 +158,22 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                             Encuentranos En Nuestras Redes Sociales!
                         </p>
                         <section class="mb-4">
-                            <!-- Facebook -->
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                                    class="fab fa-facebook-f"></i></a>
+
 
                             <!-- Twitter -->
                             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
                                     class="fab fa-twitter"></i></a>
 
-                            <!-- Google -->
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                                    class="fab fa-google"></i></a>
 
-                            <!-- Instagram -->
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                                    class="fab fa-instagram"></i></a>
 
                             <!-- Linkedin -->
                             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
                                     class="fab fa-linkedin-in"></i></a>
 
-                            <!-- Github -->
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                                    class="fab fa-github"></i></a>
                         </section>
 
                         <section>
                             <form>
-
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-auto">
-                                        <p class="pt-2">
-                                            <strong>Suscribete a nuestra Compañía</strong>
-                                        </p>
-                                    </div>
-
-                                    <div class="col-md-5 col-12">
-                                        <div class="form-outline form-white mb-4">
-                                            <input type="email" id="Correo" class="form-control" />
-                                            <label class="form-label">Correo Electrónico</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-outline-light mb-4">
-                                            Suscribite
-                                        </button>
-                                    </div>
-
-                                </div>
                                 <div>
                                     <p>
                                         No somos una empresa, somos gente haciendo cosas.
