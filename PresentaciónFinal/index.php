@@ -11,7 +11,7 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="Home_page/stylos_Home.css">
     <script src="https://kit.fontawesome.com/dd0442ec5c.js" crossorigin="anonymous"></script>
-    <title>Sistema ED 2021</title>
+    <title>Sistema E.E.</title>
 </head>
 
 <body style="background-color:#1C2833;">
