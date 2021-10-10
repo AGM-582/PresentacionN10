@@ -41,12 +41,9 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
 
                     <div class="carousel-inner">
@@ -61,14 +58,12 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                         </div>
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
 
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -90,14 +85,11 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                 <form class="form-signin" id="validacion" method="POST">
                     <span id="reauth-email" class="reauth-email"></span>
                     <label class="form-label text-light">Correo:</label>
-                    <input type="text" id="inputEmail" class="form-control" placeholder="Ingrese su correo" required
-                        autofocus name="id_usuario">
+                    <input type="text" id="inputEmail" class="form-control" placeholder="Ingrese su correo" required autofocus name="id_usuario">
                     <br>
                     <label class="form-label text-light">Contraseña:</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required
-                        name="clave">
-                    <br><a href="contactanos.php" target="_blank"
-                        class="form-check-label text-muted text-decoration-blue">¿Has Olvidado Tu Contraseña?</a>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="clave">
+                    <br><a href="contactanos.php" target="_blank" class="form-check-label text-muted text-decoration-blue">¿Has Olvidado Tu Contraseña?</a>
                     <div id="remember" class="checkbox">
                     </div>
 
@@ -105,12 +97,10 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                     <!--SECTOR DE LOS BOTONES RE LOCOS-->
                     <br>
                     <div class="align-center">
-                        <div class="btn-group btn-group-sm" style="align-content:center;" role="group"
-                            aria-label="button group">
+                        <div class="btn-group btn-group-sm" style="align-content:center;" role="group" aria-label="button group">
                             <div>
                                 <div class="py-lg-1 p-3">
-                                    <a href="index.php"><button class="btn btn-warning btn-block"
-                                            type="button">Regresar</button></a>
+                                    <a href="index.php"><button class="btn btn-warning btn-block" type="button">Regresar</button></a>
                                 </div>
                             </div>
                             &nbsp;
@@ -150,14 +140,12 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
 
 
                             <!-- Twitter -->
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
 
 
 
                             <!-- Linkedin -->
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
 
                         </section>
 
@@ -195,33 +183,30 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
 
 
 <script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#ingresar').click(function() {
-        var datos = $('#validacion')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        /*alert(datos);
-        return false;*/
-        $.ajax({
+    //en teoria esto es jquery
+    $(document).ready(function() {
+        $('#ingresar').click(function() {
+            var datos = $('#validacion')
+                .serialize(); //serialize trabaja con el id del form y los names de los inputs
+            //alert(datos);
+            //return false;
+            $.ajax({
                 type: "POST",
                 url: "validacion.php",
+                dataType: 'html',
                 data: datos,
-            })
-            .then(function(response) {
-                window.location.replace("Menu/menu.php");
+                success: function(r) {
+                    if (r == "1") {
+                        window.location.replace("Menu/menu.php")
+                    } else if (r == "2") {
+                        window.location.replace("usuario/index.php")
+                    } else {
+                        alert("Credenciales incorrectas");
+                    }
+                }
             });
-    });
-});
-/*success: function(response) {
-            if (response == 1) {
-                window.location.replace("Menu/menu.php");
-            } else(
-                alert("Contrasenia incorrecta")
-            )
-        }
-    });*/
-//return false; //evita que se recargue y pierda los datos del form
-/* });
+            return false; //evita que se recargue y pierda los datos del form
+        });
 
-});*/
+    });
 </script>
