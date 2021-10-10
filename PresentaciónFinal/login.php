@@ -89,7 +89,7 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                     <label class="form-label text-light">Contraseña:</label>
                     <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required
                         name="clave">
-                    <br><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+                    <br><a href="contactanos.php" target="_blank"
                         class="form-check-label text-muted text-decoration-blue">¿Has Olvidado Tu Contraseña?</a>
                     <div id="remember" class="checkbox">
                         <!--
