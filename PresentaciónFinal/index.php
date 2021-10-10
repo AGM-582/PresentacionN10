@@ -17,7 +17,7 @@
 
     <!--------------------------------------------------------------------NavBar----------------------------------------------------->
     <header>
-        <img class="logo" src="Home_page\Normal10.png">
+        <img class="logo" src="Home_page\Normal10Escudo.png">
         <input type="checkbox" id="check">
         <label for="check" class="mostrar_menu">
             &#8801
@@ -85,25 +85,20 @@
                     </p>
                     <section class="mb-4">
                         <!-- Facebook -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank"
-                            href="https://www.facebook.com" role="button"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.facebook.com" role="button"><i class="fab fa-facebook-f"></i></a>
 
                         <!-- Twitter -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Twitter.com"
-                            role="button"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Twitter.com" role="button"><i class="fab fa-twitter"></i></a>
 
                         <!-- Google -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Google.com"
-                            role="button"><i class="fab fa-google"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Google.com" role="button"><i class="fab fa-google"></i></a>
 
                         <!-- Instagram -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank"
-                            href="https://www.Instagram.com" role="button"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Instagram.com" role="button"><i class="fab fa-instagram"></i></a>
 
 
                         <!-- Github -->
-                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Github.com"
-                            role="button"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Github.com" role="button"><i class="fab fa-github"></i></a>
                     </section>
 
                     <section>
