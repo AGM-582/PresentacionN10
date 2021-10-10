@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 // Incluimos el archivo de conexión a base de datos
 include("../../conexion.php");
 
@@ -17,8 +18,11 @@ $data = '
             </tr>
         </thead>';
 
-
-$query = "SELECT * FROM encuestas ORDER BY id_encuesta DESC";
+if ($_SESSION["tipo_usuario"] == 1) {
+    $query = "SELECT * FROM encuestas WHERE id_carrera = '$_SESSION[carrera]'  ORDER BY id_encuesta DESC";
+} else if ($_SESSION["tipo_usuario"] == 3) {
+    $query = "SELECT * FROM encuestas ORDER BY id_encuesta DESC";
+}
 $resultado = $con->query($query);
 
 while ($row = $resultado->fetch_assoc()) {
