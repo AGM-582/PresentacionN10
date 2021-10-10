@@ -29,24 +29,26 @@ $query_nombre_profesor = "SELECT nombre
 						WHERE id = $row_id_profesor[idProfesor]";
 $resultado_nombre_profesor = $con->query($query_nombre_profesor);
 $row_nombre_profesor = $resultado_nombre_profesor->fetch_assoc();
-
-/*ACÁ SE GENERA EL TEXTO QUE VA EN LA PRESENTACIÓN DEL RESULTADO*/
-$file = fopen("textopredeterminado.txt", "w");
-fwrite($file, "Posadas, $Fecha_Automatica \n\n
-
-Apreciado/a Docente: $row_nombre_profesor[nombre]\n\n
-
-Se presenta a continuación, la Valoración de la Tarea Docente del Primer Semestre 2021, correspondiente a su asignatura.\n\n
-
-El mismo incluye, Fortalezas y Debilidades en cuanto a diferentes aspectos de la tarea docente. 
-Se utilizó una escala de satisfacción para valorar las opiniones, que fueron:\n\n
+/**Se utilizó una escala de satisfacción para valorar las opiniones, que fueron:\n\n
 
 * Muy bien\n
-* Bien Regular\n
-* Necesita mejorar.\n\n
+* Bien\n
+* Regular\n
+* Necesita mejorar.\n\n**/
+/*ACÁ SE GENERA EL TEXTO QUE VA EN LA PRESENTACIÓN DEL RESULTADO*/
+$file = fopen("textopredeterminado.txt", "w");
+fwrite($file, "Posadas, $Fecha_Automatica \n
 
-El mismo quizás no refleje el esfuerzo y el desafio que ha representado para Ud. desarrollar las clases en forma virtual, pero a pesar de todo, ha demostrado su competencia.
-En la seguridad de que los resultados serán para la mejora continua de su labor docente. \n");
+Apreciado/a Docente: $row_nombre_profesor[nombre]\n
+
+El siguiente informe correspondiente a su asignatura, se ha realizado con la intención de dar a conocer a cada profesor, de manera individual las opiniones de los alumnos.\n
+
+El mismo puede incluir, datos sobre su desempeño docente, situación adaptativa de los alumnos a las nuevas modalidades, etc.\n
+
+Las opciones para su respuesta son adaptadas a la pregunta correspondiente.\n
+
+El mismo quizás no refleje el esfuerzo y el desafio que ha representado para Ud. desarrollar las clases en forma mixta, pero a pesar de todo, ha demostrado su competencia.\n
+Los resultados serán para la mejora continua de su labor docente y mejorar la comprensión de la situación entre los alumnos cursantes. \n\n");
 fclose($file);
 //////FIN DE LA PRESENTACIÓN//////
 
@@ -55,7 +57,7 @@ $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 22.5);
 #("ruta",posicion horizontal,posicion vertical,ancho,largo) config imagen
 //$pdf->Image("..\Home_page\Normal10.png",0,0,50,50);
-/*ACÁ SE AGREGA EL TEXTO PREDEFINIDO*/
+/*ACÁ SE LLAMA A LA FUNCIÓN QUE MUESTRA EL TEXTO PREDEFINIDO*/
 $pdf->Cell(5,5,$pdf->ImprimirTexto('textopredeterminado.txt'),0,10);
 $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 20);
@@ -64,10 +66,10 @@ $pdf->Cell(0, 5, utf8_decode($row3["titulo"]), 0, 15, 'C');
 $pdf->Ln(8);
 while ($row2 = $resultados2->fetch_assoc()) {
 	$pdf->SetFont('Times', 'BU', 14);
-	$pdf->Ln(14);
+	$pdf->Ln(16);
 	//título o nombre de la pregunta
 	$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #esta es la pregunta
-	$pdf->Ln(14);
+	$pdf->Ln(16);
 	//$pdf->SetFont('Times', 'B', 11);
 	$valX = $pdf->GetX();
 	$valY = $pdf->GetY();

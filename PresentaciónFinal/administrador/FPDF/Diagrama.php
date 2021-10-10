@@ -1,5 +1,5 @@
 <?php
-require('sector.php');
+require('Sector.php');
 
 class PDF_Diag extends PDF_Sector {
     var $legends;
