@@ -185,28 +185,6 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
 
                         <section>
                             <form>
-
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-auto">
-                                        <p class="pt-2">
-                                            <strong>Suscribete a nuestra Compañía</strong>
-                                        </p>
-                                    </div>
-
-                                    <div class="col-md-5 col-12">
-                                        <div class="form-outline form-white mb-4">
-                                            <input type="email" id="Correo" class="form-control" />
-                                            <label class="form-label">Correo Electrónico</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-outline-light mb-4">
-                                            Suscribite
-                                        </button>
-                                    </div>
-
-                                </div>
                                 <div>
                                     <p>
                                         No somos una empresa, somos gente haciendo cosas.

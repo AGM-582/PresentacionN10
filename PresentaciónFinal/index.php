@@ -104,6 +104,12 @@
                         <!-- Github -->
                         <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.Github.com"
                             role="button"><i class="fab fa-github"></i></a>
+
+                        <div>
+                            <p>
+                                No somos una empresa, somos gente haciendo cosas.
+                            </p>
+                        </div>
                     </section>
 
 
