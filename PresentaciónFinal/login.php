@@ -100,6 +100,9 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
                         class="form-check-label text-muted text-decoration-blue">¿Has Olvidado Tu Contraseña?</a>
                     <div id="remember" class="checkbox">
                     </div>
+                    <div id="mensaje_error" class="mensaje_error">
+
+                    </div>
 
 
                     <!--SECTOR DE LOS BOTONES RE LOCOS-->
@@ -219,7 +222,7 @@ $(document).ready(function() {
                 } else if (r == "2") {
                     window.location.replace("usuario/index.php")
                 } else {
-                    alert("Credenciales incorrectas");
+                    $('#mensaje_error').html("Credenciales Incorrectas");
                 }
             }
         });
