@@ -193,7 +193,6 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
             $.ajax({
                 type: "POST",
                 url: "validacion.php",
-                dataType: 'html',
                 data: datos,
                 success: function(r) {
                     if (r == "1") {
