@@ -28,7 +28,12 @@ if ($row_usuario = $resultado_usuario->fetch_assoc()) {
 		$_SESSION['tipo_usuario'] = $row_usuario['id_tipo_usuario'];
 
 		echo "2";
+	} else if ($row_usuario['id_tipo_usuario'] == '3') {
+		$_SESSION['id_usuario'] = $row_usuario['id_usuario'];
+		$_SESSION['u_usuario'] = $row_usuario['nombre_completo'];
+		$_SESSION['tipo_usuario'] = $row_usuario['id_tipo_usuario'];
 
+		echo "1";
 		/*header("Location: usuario/index.php");*/
 	}
 } else {
