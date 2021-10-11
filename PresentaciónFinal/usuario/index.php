@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 $date = new DateTime();
@@ -35,7 +35,7 @@ $fecha_inicio = $date->format('Y-m-d H:i:s');
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="javascript:void(0)">Sistema de Encuestas</a>
+        <a class="navbar-brand" href="javascript:void(0)">Sistema de Encuestas y Estadísticas</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
             <span class="navbar-toggler-icon"></span>
@@ -48,17 +48,17 @@ $fecha_inicio = $date->format('Y-m-d H:i:s');
             </ul>
             <form class="form-inline my-2 my-lg-0" style="color: #fff">
 
-                <?php   
-        session_start();
-        if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
-          echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
+                <?php
+                session_start();
+                if (isset($_SESSION['u_usuario']) && isset($_SESSION['id_usuario'])) {
+                    echo "Bienvenido " . $_SESSION['u_usuario'] . "\t";
 
-          echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
-        } else {
-          header("Location: ../index.php");
-        }
+                    echo "<a href='../cerrar_sesion.php' class='btn btn-danger' style='margin-left: 10px'>Cerrar Sesión</a>";
+                } else {
+                    header("Location: ../index.php");
+                }
 
-       ?>
+                ?>
 
             </form>
         </div>
@@ -69,7 +69,7 @@ $fecha_inicio = $date->format('Y-m-d H:i:s');
         <div class="row">
             <div class="col-md-12 row">
                 <div class="col-md-12 col-xs-12">
-                    <h3>SISTEMA DE ENCUESTAS</h3>
+                    <h3>SISTEMA DE ENCUESTAS Y ESTADÍSTICAS</h3>
                 </div>
             </div>
         </div>

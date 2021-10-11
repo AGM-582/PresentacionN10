@@ -79,7 +79,7 @@ if (isset($SESSION['u_usuario'])) {  // comparamos si existe
             <!--Seccion de Logo-->
             <div class="col-lg-5">
                 <div class="px-lg-5 pt-lg-2 pb-lg-3 p-2">
-                    <img class="d-block w-100" src="Inicio_Sesion/Normal10.png">
+                    <img class="d-block w-100" src="Home_Page/normal20.png">
                 </div>
                 <!--Seccion de Bienvenidos-->
                 <div class="px-lg-5 py-lg-0 p-3 ">

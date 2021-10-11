@@ -34,7 +34,7 @@ include '../conexion.php';
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="javascript:void(0)">Sistema de Estadística Docente</a>
+        <a class="navbar-brand" href="javascript:void(0)">Sistema de Encuestas y Estadísticas</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
             <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@ include '../conexion.php';
         <div class="row">
             <div class="col-md-12 row">
                 <div class="col-md-10 col-xs-12">
-                    <h3>SISTEMA DE ESTADÍSTICA DOCENTE</h3>
+                    <h3>SISTEMA DE ENCUESTAS Y ESTADÍSTICAS</h3>
                 </div>
                 <div class="col-md-2 col-xs-12">
                     <div class="btn-group">

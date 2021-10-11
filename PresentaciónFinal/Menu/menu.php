@@ -21,9 +21,9 @@ include '../conexion.php';
     <section class="formulario">
         <div id="Perfil">
             <h3 style="text-align: left;"><u>Bienvenido</u>!</h3>
-            <h4>Escuela</h4>
+            <h4>Coordinador</h4>
             <div class="icon">
-                <h2><i class="fas fa-school"></i></h2></i>
+                <h2><i class="fas fa-user-edit"></i></i></h2></i>
             </div>
             <div id="nombre"><span>
                     <?php

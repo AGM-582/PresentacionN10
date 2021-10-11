@@ -17,7 +17,7 @@
 
     <!--------------------------------------------------------------------NavBar----------------------------------------------------->
     <header>
-        <img class="logo" src="Home_page\Normal10Escudo.png">
+        <img class="logo" src="Home_page\Normal20.png">
         <input type="checkbox" id="check">
         <label for="check" class="mostrar_menu">
             &#8801
@@ -42,7 +42,7 @@
 
     <section id="Banner">
         <div class="Contenido_Banner">
-            <h3>Sistema de Encuesta y Estadística</h3>
+            <h3>Sistema de Encuestas y Estadísticas</h3>
 
         </div>
     </section>
