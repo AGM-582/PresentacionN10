@@ -70,29 +70,36 @@ $row3 = $respuesta3->fetch_assoc();
                     ORDER BY opciones.id_pregunta, opciones.id_opcion";
                     $respuesta = $con->query($query);
                 ?>
-                    <h4 class="col-form-lg"><?php echo "$i. " . $row2['titulo'] ?></h4>
-                    <?php //se agrega al bucle el resto de las opciones con su respectivo tipo
+                <h4 class="col-form-lg"><?php echo "$i. " . $row2['titulo'] ?></h4>
+                <?php //se agrega al bucle el resto de las opciones con su respectivo tipo
                     while (($row = $respuesta->fetch_assoc())) {
                         if ($row['id_tipo_pregunta'] == 1) {
                     ?><div>
-                                <label><input class="form-check-input" type="radio" name="<?php echo $row['id_pregunta'] ?>" value="<?php echo $row['id_opcion'] ?>" required>
-                                    <?php echo $row['valor'] ?></label>
-                            </div><?php
+                    <label><input class="form-check-input" type="radio" name="<?php echo $row['id_pregunta'] ?>"
+                            value="<?php echo $row['id_opcion'] ?>" required>
+                        <?php echo $row['valor'] ?></label>
+                </div><?php
                                 } elseif ($row['id_tipo_pregunta'] == 3) {
                                     ?>
-                            <div class="form-check form-check-inline">
-                                <label><input class="form-check-input" type="checkbox" name="<?php echo $row['id_pregunta'] ?>[]" value="<?php echo $row['id_opcion'] ?>">
-                                    <?php echo $row['valor'] ?></label>
-                            </div><?php
+                <div class="form-check form-check-inline">
+                    <label><input class="form-check-input" type="checkbox" name="<?php echo $row['id_pregunta'] ?>[]"
+                            value="<?php echo $row['id_opcion'] ?>">
+                        <?php echo $row['valor'] ?></label>
+                </div><?php
                                 } elseif ($row['id_tipo_pregunta'] == 4) {
                                     ?>
-                            <div>
-                                <label>
-                                    <textarea class="col-auto" id="comentarios" name="<?php echo $row['id_pregunta'] ?>" value="<?php echo $row['id_opcion'] ?>" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style="resize:none">
+                <div>
+                    <input type="hidden" name="<?php echo $row['id_pregunta'] ?>[]" value="text_flag">
+                    <input type="hidden" name="<?php echo $row['id_pregunta'] ?>[]"
+                        value="<?php echo $row['id_opcion'] ?>">
+                    <label>
+                        <textarea class="col-auto" id="comentarios" name="<?php echo $row['id_pregunta'] ?>[]" value=""
+                            oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                            style="resize:none">
                                                 </textarea><br>
-                                </label>
-                            </div>
-                        <?php
+                    </label>
+                </div>
+                <?php
                                 }
                         ?>
                 <?php
