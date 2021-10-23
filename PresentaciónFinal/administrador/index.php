@@ -152,15 +152,14 @@ include '../conexion.php';
                         $query = $con->query("SELECT * FROM carrera WHERE id=$_SESSION[carrera]");
                         ?>
                         <div class="col-sm-9">
-                            <select name="carrera" class="form-control">
-                                <option value="0">Seleccione:</option>
+                            <select disabled name="carrera" class="form-control">
                                 <?php
-                                while ($valores = mysqli_fetch_array($query)) {
+                                $valores = mysqli_fetch_array($query);
+                                echo "<option value='$valores[id]'>$valores[nombre]</option>"
                                 ?>
-                                <?php
-                                    echo '<option value="' . $valores['id'] . '">' . $valores['nombre'] . '</option>';
-                                }
-                                ?>
+
+
+
                             </select>
                         </div>
                     </div>
