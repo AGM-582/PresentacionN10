@@ -23,10 +23,10 @@ include '../conexion.php';
     <title>ADMIN-S.E.E</title>
 
     <script type="text/javascript" language="javascript">
-    history.pushState(null, null, location.href);
-    window.onpopstate = function() {
-        history.go(1);
-    };
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.go(1);
+        };
     </script>
 
 </head>
@@ -77,8 +77,7 @@ include '../conexion.php';
                             Agregar Encuesta
                         </button>
                         <div class="col-md-5">
-                            <a href="../Menu/menu.php"><button class="float-right btn btn-warning"
-                                    style="color: white;">
+                            <a href="../Menu/menu.php"><button class="float-right btn btn-warning" style="color: white;">
                                     Regresar
                                 </button></a>
                         </div>
@@ -137,22 +136,20 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="titulo" class="col-sm-3 col-form-label">Nombre de la Encuesta</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="titulo" name="titulo"
-                                placeholder="Nombre de la Encuesta" autocomplete="off" autofocus>
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Nombre de la Encuesta" autocomplete="off" autofocus>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="descripcion" class="col-sm-3 col-form-label">Carrera o Materia</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="descripcion" name="descripcion"
-                                placeholder="Carrera o Materia"></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Carrera o Materia"></textarea>
                         </div>
                     </div>
                     <!--SELECT DE LAS CARRERAS CARGADAS EN BD-->
                     <div class="form-group row">
                         <label for="carrera" class="col-sm-3 col-form-label">CARRERAS</label>
                         <?php
-                        $query = $con->query("SELECT * FROM carrera");
+                        $query = $con->query("SELECT * FROM carrera WHERE id=$_SESSION[carrera]");
                         ?>
                         <div class="col-sm-9">
                             <select name="carrera" class="form-control">
@@ -172,7 +169,7 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="materia" class="col-sm-3 col-form-label">MATERIAS</label>
                         <?php
-                        $query = $con->query("SELECT * FROM materia");
+                        $query = $con->query("SELECT * FROM materia WHERE idCarrera = $_SESSION[carrera]");
                         ?>
                         <div class="col-sm-9">
                             <select name="materia" class="form-control">
@@ -192,8 +189,7 @@ include '../conexion.php';
                     <div class="form-group row">
                         <label for="fecha_final" class="col-sm-3 col-form-label">Fecha de Cierre</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="fecha_final" name="fecha_final"
-                                value="<?php echo $fecha_inicio ?>" autocomplete="off">
+                            <input type="text" class="form-control" id="fecha_final" name="fecha_final" value="<?php echo $fecha_inicio ?>" autocomplete="off">
                             <p>Fomato: año-mes-día horas:minutos:segundos</p>
                         </div>
                     </div>
@@ -204,8 +200,7 @@ include '../conexion.php';
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="btnGuardar" onclick="agregarEncuesta()">Agregar
                     Encuesta</button>
-                <input type="hidden" id="hidden_id_usuario" name="id_usuario"
-                    value="<?php echo $_SESSION['id_usuario'] ?>">
+                <input type="hidden" id="hidden_id_usuario" name="id_usuario" value="<?php echo $_SESSION['id_usuario'] ?>">
             </div>
             </form>
 
@@ -232,24 +227,21 @@ include '../conexion.php';
                 <div class="form-group row">
                     <label for="modificar_titulo" class="col-sm-3 col-form-label">Nombre de la Encuesta</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="modificar_titulo"
-                            placeholder="Nombre de la Encuesta">
+                        <input type="text" class="form-control" id="modificar_titulo" placeholder="Nombre de la Encuesta">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="descripcion" class="col-sm-3 col-form-label">Carrera o Materia</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="modificar_descripcion"
-                            placeholder="Carrera o Materia"></textarea>
+                        <textarea class="form-control" id="modificar_descripcion" placeholder="Carrera o Materia"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="fecha_final" class="col-sm-3 col-form-label">Fecha de Cierre</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="modificar_fecha_final" placeholder="Fecha de Cierre"
-                            autocomplete="off" value="<?php echo $fecha_inicio ?>">
+                        <input type="text" class="form-control" id="modificar_fecha_final" placeholder="Fecha de Cierre" autocomplete="off" value="<?php echo $fecha_inicio ?>">
                         <p>Fomato: año-mes-día horas:minutos:segundos</p>
                     </div>
                 </div>
@@ -268,35 +260,35 @@ include '../conexion.php';
 </div>
 
 <script type="text/javascript">
-//en teoria esto es jquery
-$(document).ready(function() {
-    $('#btnGuardar').click(function() {
-        var datos = $('#Filtro')
-            .serialize(); //serialize trabaja con el id del form y los names de los inputs
-        //alert(datos);
-        //return false;
-        $.ajax({
-            type: "POST",
-            url: "ajax_encuesta/agregarEncuesta.php",
-            data: datos,
-            success: function(r) {
-                if (r == 1) {
-                    alert("Error al cargar");
+    //en teoria esto es jquery
+    $(document).ready(function() {
+        $('#btnGuardar').click(function() {
+            var datos = $('#Filtro')
+                .serialize(); //serialize trabaja con el id del form y los names de los inputs
+            //alert(datos);
+            //return false;
+            $.ajax({
+                type: "POST",
+                url: "ajax_encuesta/agregarEncuesta.php",
+                data: datos,
+                success: function(r) {
+                    if (r == 1) {
+                        alert("Error al cargar");
 
-                } else {
-                    alert("Agregado con exito");
-                    $("#modal_agregar").modal("hide");
-                    mostrarEncuestas();
-                    $("#titulo").val("");
-                    $("#carrera").val("");
-                    $("#materia").val("");
-                    $("#descripcion").val("");
-                    $("#fecha_final").val("");
+                    } else {
+                        alert("Agregado con exito");
+                        $("#modal_agregar").modal("hide");
+                        mostrarEncuestas();
+                        $("#titulo").val("");
+                        $("#carrera").val("");
+                        $("#materia").val("");
+                        $("#descripcion").val("");
+                        $("#fecha_final").val("");
+                    }
                 }
-            }
+            });
+            //return false; //evita que se recargue y pierda los datos del form
         });
-        //return false; //evita que se recargue y pierda los datos del form
-    });
 
-});
+    });
 </script>
