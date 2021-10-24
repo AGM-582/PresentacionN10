@@ -26,12 +26,18 @@ if ($_SESSION["tipo_usuario"] == 1) {
 $resultado = $con->query($query);
 
 while ($row = $resultado->fetch_assoc()) {
+    $estado = '';
+    if ($row["estado"] == 1) {
+        $estado = 'Pública';
+    } else {
+        $estado = 'Oculta';
+    }
     $data .= '
         <tbody>
             <tr>
                 <td><a href="mostrar_preguntas.php?id_encuesta=' . $row['id_encuesta'] . '">' . $row['titulo'] . '</a></td>
                 <td width="100">' . mb_strimwidth($row["descripcion"], 0, 30, "...") . '</td>
-                <td>' . $row["estado"] . '</td>
+                <td>' . $estado . '</td>
                 <td>' . $row["fecha_inicio"] . '</td>
                 <td>' . $row["fecha_final"] . '</td>
                 <td>
