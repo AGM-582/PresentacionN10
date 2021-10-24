@@ -155,7 +155,7 @@ include '../conexion.php';
                         $query = $con->query("SELECT * FROM carrera WHERE id=$_SESSION[carrera]");
                         ?>
                         <div class="col-sm-9">
-                            <select disabled name="carrera" class="form-control">
+                            <select name="carrera" class="form-control">
                                 <?php
                                 $valores = mysqli_fetch_array($query);
                                 echo "<option value='$valores[id]'>$valores[nombre]</option>"
@@ -237,10 +237,10 @@ include '../conexion.php';
                 </div>
 
                 <div class="form-group row">
-                    <label for="descripcion" class="col-sm-3 col-form-label">Carrera o Materia</label>
+                    <label for="descripcion" class="col-sm-3 col-form-label">Descripción</label>
                     <div class="col-sm-9">
                         <textarea class="form-control" id="modificar_descripcion"
-                            placeholder="Carrera o Materia"></textarea>
+                            placeholder="Describa brevemente la temática"></textarea>
                     </div>
                 </div>
 
@@ -283,7 +283,7 @@ $(document).ready(function() {
                     alert("Error al cargar");
 
                 } else {
-                    alert(r);
+                    alert('Agregado con éxito');
                     $("#modal_agregar").modal("hide");
                     mostrarEncuestas();
                     $("#titulo").val("");
