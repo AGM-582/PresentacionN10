@@ -23,7 +23,7 @@
             &#8801
         </label>
         <nav class="menu">
-            <a href="Sobre_Nosotros/Sobre_Nosotros.html">Sobre Nosotros</a>
+            <a href="Sobre_Nosotros/Sobre_Nosotros.php">Sobre Nosotros</a>
             <!--<a href="Sistema_ED/Carga_Alumno/Carga_Alumno.html">Carga Alumno</a>
             <a href="Sistema_ED/Carga_Profesor/Carga_Profesor.html">Carga Profesor</a>
             <a href="Sistema_ED/Carga_Materia/Carga_Materia.html">Carga Materia</a>-->
