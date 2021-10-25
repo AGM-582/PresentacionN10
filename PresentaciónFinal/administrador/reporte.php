@@ -2,9 +2,9 @@
 //date_default_timezone_set('America/Argentina/Buenos_Aires');
 setlocale(LC_TIME, 'Spanish');
 //saqué de acá, porque me estaba dejando estúpido: https://stackoverflow.com/questions/27450346/convert-to-capital-letter-the-day-and-month-names-using-php-strftime
-$default_local_date = ucwords(utf8_encode(strftime('%e de %B de %Y')));//pasa todo a mayúsculas las primeras letas
+$default_local_date = ucwords(utf8_encode(strftime('%e de %B de %Y'))); //pasa todo a mayúsculas las primeras letas
 $date_connectors_capital = array('De', 'Del');
-$date_connectors_lower = array('de', 'del');//corrige los conectores
+$date_connectors_lower = array('de', 'del'); //corrige los conectores
 $Fecha_Automatica = str_replace($date_connectors_capital, $date_connectors_lower, $default_local_date);
 
 require('FPDF/Diagrama.php');
@@ -31,10 +31,10 @@ $resultado_nombre_profesor = $con->query($query_nombre_profesor);
 $row_nombre_profesor = $resultado_nombre_profesor->fetch_assoc();
 /**Se utilizó una escala de satisfacción para valorar las opiniones, que fueron:\n\n
 
-* Muy bien\n
-* Bien\n
-* Regular\n
-* Necesita mejorar.\n\n**/
+ * Muy bien\n
+ * Bien\n
+ * Regular\n
+ * Necesita mejorar.\n\n**/
 /*ACÁ SE GENERA EL TEXTO QUE VA EN LA PRESENTACIÓN DEL RESULTADO*/
 $file = fopen("textopredeterminado.txt", "w");
 fwrite($file, "Posadas, $Fecha_Automatica \n
@@ -58,23 +58,18 @@ $pdf->SetFont('Times', 'B', 22.5);
 #("ruta",posicion horizontal,posicion vertical,ancho,largo) config imagen
 //$pdf->Image("..\Home_page\Normal10.png",0,0,50,50);
 /*ACÁ SE LLAMA A LA FUNCIÓN QUE MUESTRA EL TEXTO PREDEFINIDO*/
-$pdf->Cell(5,5,$pdf->ImprimirTexto('textopredeterminado.txt'),0,10);
+$pdf->Cell(5, 5, $pdf->ImprimirTexto('textopredeterminado.txt'), 0, 10);
 $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 20);
 //este sería el nombre de la encuesta o título
 $pdf->Cell(0, 5, utf8_decode($row3["titulo"]), 0, 15, 'C');
 $pdf->Ln(8);
+
+$bandera_texto = false;
+
 while ($row2 = $resultados2->fetch_assoc()) {
-	$pdf->SetFont('Times', 'BU', 14);
-	$pdf->Ln(16);
-	//título o nombre de la pregunta
-	$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #esta es la pregunta
-	$pdf->Ln(16);
-	//$pdf->SetFont('Times', 'B', 11);
-	$valX = $pdf->GetX();
-	$valY = $pdf->GetY();
 	$id_pregunta = $row2['id_pregunta'];
-	$query = "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as count, opciones.valor 
+	$query = "SELECT preguntas.id_pregunta, preguntas.titulo,COUNT('preguntas.titulo') as count, opciones.valor, opciones.id_opcion
 			FROM opciones INNER JOIN preguntas ON opciones.id_pregunta=preguntas.id_pregunta
 			INNER JOIN resultados ON opciones.id_opcion=resultados.id_opcion WHERE preguntas.id_pregunta = '$id_pregunta' GROUP BY opciones.valor
 			ORDER BY preguntas.id_pregunta";
@@ -85,6 +80,12 @@ while ($row2 = $resultados2->fetch_assoc()) {
 	$tamaño = array();
 	$i = 1;
 	while ($row = $resultados->fetch_assoc()) {
+
+		if (utf8_decode($row['valor']) == 'Texto_Index') {
+			$bandera_texto = true;
+			$id_opcion = $row['id_opcion'];
+			break;
+		}
 		$cantidades[$i] = 0;
 		$cantidades[$i] = $row['count'];
 		$titulos[$i] = utf8_decode($row['valor']);
@@ -97,19 +98,65 @@ while ($row2 = $resultados2->fetch_assoc()) {
 		///////////////////
 		$i++;
 	}
-	$data = array_combine($titulos, $cantidades);
-	//acá se determina la posición horizontal del gráfico
-	$pdf->SetXY(20, $valY);
-	//randomizamos los colores
-	$col1 = array(rand(1,85), rand(86,171), rand(172,255));
-	$col2 = array(rand(172,255), rand(1,85), rand(86,171));
-	$col3 = array(rand(86,171),rand(172,255),rand(1,85));
-	//tamaño del gráfico es ancho primero y después alto junto con leyendas aparentemente
-	$pdf->PieChart(150, 75, $data, '%l (%p)', array($col1, $col2, $col3));
-	//acá se determina la posición vertical del gráfico, pero toma desde el segundo y no desde el primero
-	$pdf->SetXY($valX, $valY + 45);
-	$pdf->Ln(12);
-	$opciones = $i - 1;
+	if ($bandera_texto) {
+		$largo_actual = 275 - $pdf->GetY();
+		if ($largo_actual < 22) {
+			$valY = 45;
+			$pdf->AddPage();
+			//$pdf->Write(5, strval($largo_actual));
+		}
+		$pdf->SetFont('Times', 'BU', 14);
+		$pdf->Ln(8);
+		//título o nombre de la pregunta
+		$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #esta es la pregunta
+		$pdf->Ln(8);
+		//$pdf->SetFont('Times', 'B', 11);
+		$valX = $pdf->GetX();
+		$valY = $pdf->GetY();
+		$pdf->SetFont('Times', '', 12);
+		$query_comentarios = "SELECT Comentarios FROM resultados WHERE id_opcion = $id_opcion";
+		$resultado_comentarios = $con->query($query_comentarios);
+		while ($row_comentarios = $resultado_comentarios->fetch_assoc()) {
+			$largo_actual = 275 - $pdf->GetY();
+			if ($largo_actual < 5) {
+				$valY = 45;
+				$pdf->AddPage();
+				//$pdf->Write(5, strval($largo_actual));
+			}
+			$pdf->Write(5, "* " . $row_comentarios['Comentarios']);
+			$pdf->Ln(12);
+		}
+		$bandera_texto = false;
+	} else {
+		$largo_actual = 275 - $pdf->GetY();
+		if ($largo_actual < 69) {
+			$pdf->GetY();
+			$valY = 45;
+			$pdf->AddPage();
+			//$pdf->Write(5, strval($largo_actual));
+		}
+		$pdf->SetFont('Times', 'BU', 14);
+		$pdf->Ln(8);
+		//título o nombre de la pregunta
+		$pdf->Cell(0, 5, utf8_decode($row2["titulo"]), 0, 1); #esta es la pregunta
+		$pdf->Ln(8);
+		//$pdf->SetFont('Times', 'B', 11);
+		$valX = $pdf->GetX();
+		$valY = $pdf->GetY();
+		$data = array_combine($titulos, $cantidades);
+		//acá se determina la posición horizontal del gráfico
+		$pdf->SetXY(20, $valY);
+		//randomizamos los colores
+		$col1 = array(rand(1, 85), rand(86, 171), rand(172, 255));
+		$col2 = array(rand(172, 255), rand(1, 85), rand(86, 171));
+		$col3 = array(rand(86, 171), rand(172, 255), rand(1, 85));
+		//tamaño del gráfico es ancho primero y después alto junto con leyendas aparentemente
+		$pdf->PieChart(100, 75, $data, '%l (%p)', array($col1, $col2, $col3));
+		//acá se determina la posición vertical del gráfico, pero toma desde el segundo y no desde el primero
+		$pdf->SetXY($valX, $valY + 45);
+		$pdf->Ln(8);
+		$opciones = $i - 1;
+	}
 }
 //Bar diagram
 /*$pdf->SetFont('Arial', 'BIU', 12);
